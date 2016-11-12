@@ -1,0 +1,38 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Add Event</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list">
+
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Dringlichkeit
+        </div>
+        <select ng-model="urgencies.selected">
+          <option ng-repeat="urgency in urgencies">{{urgency}}</option>
+        </select>
+      </label>
+
+      <div class="item item-divider item-icon-right">
+        Symptome
+        <i ng-click="addSymptome()" class="icon ion-android-add"></i>
+      </div>
+      <div class="item" ng-repeat="symptom in symptoms">
+        {{symptom}}
+      </div>
+
+
+      <button class="item button button-dark button-full" ng-click="selectDate()">
+        {{ selectedDateTime || 'datum'}}
+      </button>
+
+      <button class="item button button-positive button-full" ng-click="save()">
+        save
+      </button>
+      <button class="item button button-light button-full" ng-click="close()">
+        cancel
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>

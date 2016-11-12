@@ -1,0 +1,15 @@
+/* Empty. Add your own CSS if you like */
+
+.events-actions {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.login-wrapper{
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: stretch;
+}

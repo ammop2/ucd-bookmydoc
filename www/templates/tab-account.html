@@ -1,0 +1,17 @@
+<ion-view view-title="Account">
+  <ion-content>
+    <ion-list>
+      <div class="item item-thumbnail-left">
+        <img src="img/mila.png">
+        <h2>Mila Kunis</h2>
+        <p>14.09.1983 - Ukraine</p>
+      </div>
+      <div class="item item-divider item-icon-right">
+        Krankenkasse
+        <i ng-click="setKK()" class="icon ion-android-add"></i>
+      </div>
+      <label class="item" ng-if="kk">
+        {{kk}}
+        </label>
+  </ion-content>
+</ion-view>

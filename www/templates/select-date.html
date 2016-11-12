@@ -1,0 +1,10 @@
+<label class="item item-input">
+  <input type="date" id="exampleInput" name="input" ng-model="selected.date.value">
+</label>
+
+<ion-slide-box show-pager="false" on-slide-changed="slideHasChanged($index)">
+  <ion-slide ng-repeat="date in dates">
+    <ion-radio ng-repeat="time in date.times" ng-model="date.selectedTime.value" ng-value="time">{{time}}</ion-radio>
+  </ion-slide>
+</ion-slide-box>
+
