@@ -99,7 +99,7 @@ angular.module('ctrl.events', [])
 
       textPopup.then(function (res) {
         if(res) {
-
+ 
           res.forEach(function (item) {
             if(item.selected) {
               $scope.symptoms.push(item.title);
