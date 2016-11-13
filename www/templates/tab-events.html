@@ -8,26 +8,34 @@
 
       <div class="item card no-padding-lr" ng-repeat="event in events">
           <div class="item item-avatar">
-            <img src={{event.location_img}}>
-            <h2>{{event.title}}</h2>
-            <p>{{event.location}}</p>
-            <p>{{event.doctor}}</p>
-            <p>{{event.date}}</p>
+              <img src={{event.location_img}} />
+              <h2>{{event.title}}</h2>
+              <p>{{event.location}}</p>
+              <p>{{event.doctor}}</p>
+              <p>{{event.date}}</p>
           </div>
-
           <div class="item item-body">
-            <p>
-              {{event.description}}
-            </p>
-            <div class="item item-borderless no-padding-lr">
-              <a ng-click="cancel(event)" href="#" class="assertive subdued">Cancel</a>
-              <div>
-                <span class="badge badge-balanced" ng-if="event.status == 'accepted'">{{event.messages}}</span>
-                <span class="badge badge-energized" ng-if="event.status == 'pending'">{{event.messages}}</span>
-                <span class="badge badge-assertive" ng-if="event.status == 'declined'">{{event.messages}}</span>
-              </div>
-            </div>
+              <p>
+                {{event.description}}
+              </p>
+              <ion-item class="row item item-borderless no-padding-lr">
+
+                  <a ng-click="cancel(event)" href="#" class="text-left col subdued">Cancel</a>
+
+                  <div class="status col item-borderless text-center">
+                      <ion-icon class="icon balanced ion-checkmark-round" ng-if="event.status == 'accepted'"> Ok</ion-icon>
+                      <ion-icon class="icon energized ion-android-time" ng-if="event.status == 'pending'"> Warten</ion-icon>
+                      <ion-icon class="icon assertive ion-close-round" ng-if="event.status == 'declined'"> Abgelehnt</ion-icon>
+                  </div>
+                  <i class="col text-right">
+                    <span class="circle balanced-bg" ng-if="event.status == 'accepted'">{{event.messages}}</span>
+                    <span class="circle energized-bg" ng-if="event.status == 'pending'">{{event.messages}}</span>
+                    <span class="circle assertive-bg" ng-if="event.status == 'declined'">{{event.messages}}</span>
+                  </i>
+              </ion-item>
+
           </div>
       </div>
-      </div>
+    </div>
+  </ion-content>
 </ion-view>
