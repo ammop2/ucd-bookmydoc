@@ -67,7 +67,7 @@ angular.module('starter.services', [])
       doctor: 'F. Badetscher',
       location_img: 'img/doktor.jpg',
       date: '30.12.2016',
-      description: '',
+      description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
       messages: 0
     },
@@ -78,7 +78,7 @@ angular.module('starter.services', [])
       doctor: '',
       location_img: 'img/inselspital.jpg',
       date: '23.3.2017',
-      description: '',
+      description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
       messages: 1
     }
@@ -105,6 +105,32 @@ angular.module('starter.services', [])
       }
     }
   })
+  .factory('Symptoms',function(){
+    var symptoms = [
+      {
+        selected: false,
+        title: 'Übelkeit',
+      },
+      {
+        selected: false,
+        title: 'Schwindel',
+      },
+      {
+        selected: false,
+        title: 'Fieber',
+      },
+      {
+        selected: false,
+        title: 'Herzrasen',
+      }
+    ];
+    return {
+      all: function(){
+        return symptoms;
+      }
+    }
+  })
+
   .factory('Krankenkassen', function () {
     var krankenkassen = [
       'Agrisano',

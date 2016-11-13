@@ -4,7 +4,7 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, $location) {
+  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Symptoms, $location) {
     $scope.events = Events.all();
     $scope.symptoms = [];
     $scope.urgencies = [
@@ -69,24 +69,7 @@ angular.module('ctrl.events', [])
 
     function addTagSymptom() {
       var addTagScope = $scope.$new();
-      addTagScope.tags = [
-        {
-          selected: false,
-          title: 'Übelkeit',
-        },
-        {
-          selected: false,
-          title: 'Schwindel',
-        },
-        {
-          selected: false,
-          title: 'Fieber',
-        },
-        {
-          selected: false,
-          title: 'Herzrasen',
-        },
-      ]
+      addTagScope.tags = Symptoms.all();
       addTagScope.selected = {
       }
 
@@ -125,8 +108,8 @@ angular.module('ctrl.events', [])
           { text: 'Liste' },
           { text: 'Frei-text' }
         ],
-        titleText: 'add Symptom',
-        cancelText: 'Cancel',
+        titleText: 'Symptom hinzufügen',
+        cancelText: 'Abbrechen',
         cancel: function() {
           // add cancel code..
         },
