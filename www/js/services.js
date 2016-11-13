@@ -157,7 +157,7 @@ angular.module('starter.services', [])
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
-      messages: 1
+      messages: 2
     }
 
     ];

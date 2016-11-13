@@ -19,6 +19,15 @@
   padding-right: 0px;
 }
 
+.margin-top{
+  margin-top: 30px;
+}
+
+.margin-bottom{
+  margin-bottom: 30px;
+}
+
+
 .circle{
   border-radius: 0.8em;
   -moz-border-radius: 0.8em;

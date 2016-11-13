@@ -21,7 +21,8 @@
           ng-model="doctor.selected"
           ng-options="doctor.fullname for doctor in healthinstitutes.selected.doctors" />
       </label>
-      <label class="item item-input item-select">
+
+      <label class="margin-top margin-bottom item item-input item-select">
         <div class="input-label">
           Dringlichkeit
         </div>
@@ -30,24 +31,27 @@
         </select>
       </label>
 
-      <div class="item item-divider item-icon-right">
-        Symptome
-        <i ng-click="addSymptome()" class="icon ion-android-add"></i>
-      </div>
-      <div class="item" ng-repeat="symptom in symptoms">
-        {{symptom}}
+      <div class="margin-top margin-bottom">
+        <div class="item item-divider item-icon-right">
+          Symptome
+          <i ng-click="addSymptome()" class="icon ion-android-add"></i>
+        </div>
+        <div class="item" ng-repeat="symptom in symptoms">
+          {{symptom}}
+        </div>
       </div>
 
       <button class="item button button-dark button-full" ng-click="selectDate()">
         {{ selectedDateTime || 'Datum'}}
       </button>
 
-      <button class="item button button-positive button-full" ng-click="save()">
+      <button class="item button button-balanced button-full" ng-click="save()">
         Speichern
       </button>
       <button class="item button button-light button-full" ng-click="close()">
         Abbrechen
       </button>
+
     </div>
   </ion-content>
 </ion-modal-view>
