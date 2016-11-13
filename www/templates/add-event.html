@@ -6,10 +6,21 @@
     <div class="list">
       <label class="item item-input item-select">
         <div class="input-label">
-          Arzt
+          Spital, Ärztezentrum
         </div>
         <select ng-model="healthinstitutes.selected"
-                ng-options='(healthinstitute.doctor + " - " + healthinstitute.title) for healthinstitute in healthinstitutes track by healthinstitute.id' />
+                ng-options='healthinstitute.title for healthinstitute in healthinstitutes '/>
+          <option value=""></option>
+        </select>
+      </label>
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Arzt
+        </div>
+        <select
+          ng-disabled="!healthinstitutes.selected"
+          ng-model="doctor.selected"
+          ng-options="doctor.fullname for doctor in healthinstitutes.selected.doctors" />
       </label>
       <label class="item item-input item-select">
         <div class="input-label">

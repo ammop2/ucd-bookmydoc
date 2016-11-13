@@ -48,23 +48,64 @@ angular.module('starter.services', [])
       }
     };
   })
-  .factory('HealthInstitute',function(){
+  .factory('Doctors', function(){
+    var docs = [
+      {
+        id: 0,
+        surname: "Schweizer",
+        name: "Hans",
+        fullname: "H. Schweizer"
+      },
+      {
+        id: 1,
+        surname: "Müller",
+        name: "Fritz",
+        fullname: "F. Müller"
+      },
+      {
+        id: 2,
+        surname: "Meister",
+        name: "Hans",
+        fullname: "H. Meister"
+      },
+    ];
+    return {
+      all: function(){
+        return docs;
+      },
+      get: function(id){
+        for (var i = 0; i < docs.length; i++){
+          if(docs[i].id === parseInt(id)){
+            return docs[i];
+          }
+        }
+        return null;
+      }
+    }
+  })
+  .factory('HealthInstitute',function(Doctors){
+
+    var doc1 = Doctors.get(0);
+    var doc2 = Doctors.get(1);
+    var doc3 = Doctors.get(2);
+
     var hi = [
       {
         id: 0,
         title: 'Spital Thun',
-        doctor: 'M. Wagner',
         img: 'img/spitalthun.jpg',
+        doctors: [doc1,doc2]
       },
       {
         id: 1,
         title: 'Inselspital Bern',
-        doctor: 'F. Badetscher',
         img: 'img/inselspital.jpg',
+        doctors: [doc3]
       }
     ];
     return {
       all: function(){
+        console.log(hi);
         return hi;
       },
       get: function(id){
@@ -86,7 +127,7 @@ angular.module('starter.services', [])
       id: 0,
       title: 'Bauchschmerzen',
       location: hi1.title,
-      doctor: hi1.doctor,
+      doctor: hi1.doctors[0].fullname,
       location_img: hi1.img,
       date: '23.12.2016',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
@@ -97,7 +138,7 @@ angular.module('starter.services', [])
       id: 1,
       title: 'Jährliche Untersuchung',
       location: hi2.title,
-      doctor: hi2.doctor,
+      doctor: hi2.doctors[0].fullname,
       location_img: hi2.img,
       date: '30.12.2016',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
@@ -108,7 +149,7 @@ angular.module('starter.services', [])
       id: 1,
       title: 'Operation Kniegelenk',
       location: hi1.title,
-      doctor: hi1.doctor,
+      doctor: hi1.doctors[1].fullname,
       location_img: hi1.img,
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',

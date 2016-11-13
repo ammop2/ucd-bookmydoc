@@ -4,11 +4,30 @@ angular.module('ctrl.settings', [])
       $location.path('tab/events');
     }
   })
-  .controller('SettingsCtrl', function ($scope, $ionicPopup, HealthInstitute, Krankenkassen) {
+  .controller('SettingsCtrl', function ($scope, $ionicPopup, $ionicModal, HealthInstitute, Krankenkassen) {
     $scope.kks = Krankenkassen.all();
     $scope.kk = $scope.kks[0];
 
     $scope.healthinstitutes = HealthInstitute.all();
+
+    $ionicModal.fromTemplateUrl('templates/tab-account-addDoctor.html', {
+      scope: $scope,
+      animation: 'slide-in-up',
+    }).then(function(modal) {
+      $scope.doctorModal = modal;
+    });
+
+    $scope.closeDoctorModal = function() {
+      $scope.doctorModal.hide();
+    };
+
+    $scope.openDoctorModal = function() {
+      $scope.doctorModal.show();
+    };
+    // Cleanup the modal when we're done with it!
+    $scope.$on('$destroy', function() {
+      $scope.doctorModal.remove();
+    });
 
     $scope.setKK = function () {
       var addTagScope = $scope.$new();
@@ -19,7 +38,7 @@ angular.module('ctrl.settings', [])
       }
 
       var textPopup = $ionicPopup.confirm({
-        title: 'Freitext',
+        title: 'Krankenkasse auswählen',
         template: '<ion-list><ion-radio ng-repeat="kk in kks" ng-model="selected.value" ng-value="kk">{{kk}}</ion-radio></ion-list>',
         scope: addTagScope,
         buttons: [

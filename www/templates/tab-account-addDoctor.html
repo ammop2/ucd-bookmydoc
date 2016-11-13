@@ -1,0 +1,19 @@
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Doktor hinzufügen</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-searchbar ng-model="healthinstitutes"></ion-searchbar>
+    <ion-list>
+      <ion-item class="item item-thumbnail-left item-remove-animate" ng-repeat="healthinstitute in healthinstitutes">
+        <img src={{healthinstitute.img}}>
+        <h2>{{healthinstitute.title}}</h2>
+        <p>Doktor: {{healthinstitute.doctor}}</p>
+        <ion-option-button class="button-assertive" ng-click="remove(chat)">Löschen</ion-option-button>
+      </ion-item>
+    </ion-list>
+    <button ng-click="closeDoctorModal()" class="item button button-full button-dark">
+      Abbrechen
+    </button>
+  </ion-content>
+</ion-modal-view>
