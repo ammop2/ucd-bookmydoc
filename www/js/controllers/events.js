@@ -16,7 +16,7 @@ angular.module('ctrl.events', [])
 
     // healthinstitute (Spitäler, "Hausarzt..."
     $scope.healthinstitutes = HealthInstitute.all();
-    $scope.healthinstitutes.selected = (HealthInstitute.get(0)).title;
+    $scope.healthinstitutes.selected = HealthInstitute.get(0);
 
     $ionicModal.fromTemplateUrl('templates/add-event.html', {
       scope: $scope,
@@ -31,13 +31,16 @@ angular.module('ctrl.events', [])
 
     $scope.save = function () {
       $scope.modal.hide();
+      console.log($scope.healthinstitutes.selected);
       var event = {
-        title: "",
+        title: "Neue Anfrage",
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,
-
-
+        doctor: $scope.healthinstitutes.selected.doctor,
+        description: $scope.symptoms.toString(),
+        status: 'pending',
+        messages: 0,
       }
       Events.add(event);
     };

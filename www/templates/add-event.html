@@ -8,9 +8,8 @@
         <div class="input-label">
           Arzt
         </div>
-        <select ng-model="healthinstitutes.selected">
-          <option ng-repeat="healthinstitute in healthinstitutes">{{healthinstitute.title}}</option>
-        </select>
+        <select ng-model="healthinstitutes.selected"
+                ng-options='(healthinstitute.doctor + " - " + healthinstitute.title) for healthinstitute in healthinstitutes track by healthinstitute.id' />
       </label>
       <label class="item item-input item-select">
         <div class="input-label">
