@@ -72,11 +72,19 @@ angular.module('ctrl.events', [])
       addTagScope.tags = [
         {
           selected: false,
-          title: 'Aids',
+          title: 'Übelkeit',
         },
         {
           selected: false,
-          title: 'Lebra',
+          title: 'Schwindel',
+        },
+        {
+          selected: false,
+          title: 'Fieber',
+        },
+        {
+          selected: false,
+          title: 'Herzrasen',
         },
       ]
       addTagScope.selected = {
@@ -99,7 +107,7 @@ angular.module('ctrl.events', [])
 
       textPopup.then(function (res) {
         if(res) {
- 
+
           res.forEach(function (item) {
             if(item.selected) {
               $scope.symptoms.push(item.title);

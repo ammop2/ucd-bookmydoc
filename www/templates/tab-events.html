@@ -6,24 +6,27 @@
         neuer Termin
       </button>
 
-      <div class="item card" ng-repeat="event in events">
+      <div class="item card no-padding-lr" ng-repeat="event in events">
           <div class="item item-avatar">
-            <img src="mcfly.jpg">
-            <h2>{{event.titel}}</h2>
-            <p>November 05, 1955</p>
+            <img src={{event.location_img}}>
+            <h2>{{event.title}}</h2>
+            <p>{{event.location}}</p>
+            <p>{{event.doctor}}</p>
+            <p>{{event.date}}</p>
           </div>
 
           <div class="item item-body">
-            <img class="full-image" src="delorean.jpg">
+            <!--<img class="full-image" src="delorean.jpg">-->
             <p>
-              This is a "Facebook" styled Card. The header is created from a Thumbnail List item,
-              the content is from a card-body consisting of an image and paragraph text. The footer
-              consists of tabs, icons aligned left, within the card-footer.
+              {{event.description}}
             </p>
-            <div class="events-actions">
-              <a ng-click="cancel(event)" href="#" class="subdued">Cancel</a>
-              <a href="#" class="subdued">Map</a>
-              <a href="#" class="subdued icon-right">in 5 Tagen</a>
+            <div class="item item-borderless no-padding-lr">
+              <a ng-click="cancel(event)" href="#" class="assertive subdued">Cancel</a>
+              <div>
+                <span class="badge badge-balanced" ng-if="event.status == 'accepted'">{{event.messages}}</span>
+                <span class="badge badge-energized" ng-if="event.status == 'pending'">{{event.messages}}</span>
+                <span class="badge badge-assertive" ng-if="event.status == 'declined'">{{event.messages}}</span>
+              </div>
             </div>
           </div>
       </div>
