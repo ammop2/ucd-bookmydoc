@@ -4,7 +4,14 @@
   </ion-header-bar>
   <ion-content>
     <div class="list">
-
+      <label class="item item-input item-select">
+        <div class="input-label">
+          Arzt
+        </div>
+        <select ng-model="healthinstitutes.selected">
+          <option ng-repeat="healthinstitute in healthinstitutes">{{healthinstitute.title}}</option>
+        </select>
+      </label>
       <label class="item item-input item-select">
         <div class="input-label">
           Dringlichkeit

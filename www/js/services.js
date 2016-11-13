@@ -48,24 +48,57 @@ angular.module('starter.services', [])
       }
     };
   })
-  .factory('Events', function () {
+  .factory('HealthInstitute',function(){
+    var hi = [
+      {
+        id: 0,
+        title: 'Spital Thun',
+        doctor: 'M. Wagner',
+        img: 'img/spitalthun.jpg',
+      },
+      {
+        id: 1,
+        title: 'Inselspital Bern',
+        doctor: 'F. Badetscher',
+        img: 'img/inselspital.jpg',
+      }
+    ];
+    return {
+      all: function(){
+        return hi;
+      },
+      get: function(id){
+        for (var i = 0; i < hi.length; i++){
+          if(hi[i].id === parseInt(id)){
+            return hi[i];
+          }
+        }
+        return null;
+      }
+    }
+  })
+  .factory('Events', function (HealthInstitute) {
+    // get some hi to put in the events
+    var hi1 = HealthInstitute.get(0);
+    var hi2 = HealthInstitute.get(1);
+
     var events = [{
       id: 0,
       title: 'Bauchschmerzen',
-      location: 'Spital Thun',
-      doctor: '',
-      location_img: 'img/spitalthun.jpg',
+      location: hi1.title,
+      doctor: hi1.doctor,
+      location_img: hi1.img,
       date: '23.12.2016',
-      description: 'Melden Sie sich bitte am Empfang. Verlangen Sie nach Dr. Müller',
+      description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
       status: 'declined',
       messages: 1
     },
     {
       id: 1,
       title: 'Jährliche Untersuchung',
-      location: 'Inselspital Bern',
-      doctor: 'F. Badetscher',
-      location_img: 'img/doktor.jpg',
+      location: hi2.title,
+      doctor: hi2.doctor,
+      location_img: hi2.img,
       date: '30.12.2016',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
@@ -74,9 +107,9 @@ angular.module('starter.services', [])
     {
       id: 1,
       title: 'Operation Kniegelenk',
-      location: 'Inselspital Bern',
-      doctor: '',
-      location_img: 'img/inselspital.jpg',
+      location: hi1.title,
+      doctor: hi1.doctor,
+      location_img: hi1.img,
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
@@ -130,6 +163,8 @@ angular.module('starter.services', [])
       }
     }
   })
+
+
 
   .factory('Krankenkassen', function () {
     var krankenkassen = [

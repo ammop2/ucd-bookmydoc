@@ -4,7 +4,7 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Symptoms, $location) {
+  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, HealthInstitute, Symptoms, $location) {
     $scope.events = Events.all();
     $scope.symptoms = [];
     $scope.urgencies = [
@@ -14,6 +14,9 @@ angular.module('ctrl.events', [])
     ];
     $scope.urgencies.selected = 'Notfall';
 
+    // healthinstitute (Spitäler, "Hausarzt..."
+    $scope.healthinstitutes = HealthInstitute.all();
+    $scope.healthinstitutes.selected = (HealthInstitute.get(0)).title;
 
     $ionicModal.fromTemplateUrl('templates/add-event.html', {
       scope: $scope,
@@ -29,7 +32,12 @@ angular.module('ctrl.events', [])
     $scope.save = function () {
       $scope.modal.hide();
       var event = {
-        titel: $scope.urgencies.selected
+        title: "",
+        date: $scope.selectedDateTime,
+        location: $scope.healthinstitutes.selected.title,
+        location_img: $scope.healthinstitutes.selected.img,
+
+
       }
       Events.add(event);
     };
