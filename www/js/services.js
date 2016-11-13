@@ -54,19 +54,22 @@ angular.module('starter.services', [])
         id: 0,
         surname: "Schweizer",
         name: "Hans",
-        fullname: "H. Schweizer"
+        fullname: "H. Schweizer",
+        img: "img/doktor1.jpg"
       },
       {
         id: 1,
         surname: "Müller",
-        name: "Fritz",
-        fullname: "F. Müller"
+        name: "Franziska",
+        fullname: "F. Müller",
+        img: "img/doktor2.jpg"
       },
       {
         id: 2,
         surname: "Meister",
         name: "Hans",
-        fullname: "H. Meister"
+        fullname: "H. Meister",
+        img: "img/doktor3.jpg"
       },
     ];
     return {

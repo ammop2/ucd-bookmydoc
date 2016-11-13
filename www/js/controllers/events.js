@@ -16,7 +16,7 @@ angular.module('ctrl.events', [])
 
     // healthinstitute (Spitäler, "Hausarzt..."
     $scope.healthinstitutes = HealthInstitute.all();
-    $scope.healthinstitutes.selected = {};
+    $scope.healthinstitutes.selected = HealthInstitute.get(0);
 
     // Doktor
     $scope.doctor = {};

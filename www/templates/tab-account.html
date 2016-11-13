@@ -17,13 +17,19 @@
         Arzt
         <i ng-click="openDoctorModal()" class="icon ion-android-add"></i>
       </div>
+      <ion-list class="list">
+        <div  ng-repeat="healthinstitute in healthinstitutes">
+          <div class="item">
+            {{healthinstitute.title}}
+          </div>
+          <div ng-repeat="doctor in healthinstitute.doctors">
+            <a class="item item-avatar" href="#">
+              <img src={{doctor.img}}>
+              <h2>{{doctor.name}} {{doctor.surname}}</h2>
+            </a>
+        </div>
+        </div>
+        </ion-list>
       <ion-list>
-          <ion-item class="item item-thumbnail-left item-remove-animate" ng-repeat="healthinstitute in healthinstitutes">
-            <img src={{healthinstitute.img}}>
-            <h2>{{healthinstitute.title}}</h2>
-            <p>Doktor: {{healthinstitute.doctor}}</p>
-            <ion-option-button class="button-assertive" ng-click="remove(chat)">Löschen</ion-option-button>
-          </ion-item>
-      </ion-list>
   </ion-content>
 </ion-view>
