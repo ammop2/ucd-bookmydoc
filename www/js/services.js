@@ -135,7 +135,14 @@ angular.module('starter.services', [])
       date: '23.12.2016',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
       status: 'declined',
-      messages: 1
+      newMessages: 1,
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     },
     {
       id: 1,
@@ -146,10 +153,11 @@ angular.module('starter.services', [])
       date: '30.12.2016',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
-      messages: 0
+      newMessages: 0,
+      messages: []
     },
     {
-      id: 1,
+      id: 2,
       title: 'Operation Kniegelenk',
       location: hi1.title,
       doctor: hi1.doctors[1].fullname,
@@ -157,7 +165,19 @@ angular.module('starter.services', [])
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
-      messages: 2
+      newMessages: 1,
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        },
+        {
+          id: 1,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     }
 
     ];
@@ -173,6 +193,21 @@ angular.module('starter.services', [])
         for (var i = 0; i < events.length; i++) {
           if (events[i].id === parseInt(id)) {
             return events[i];
+          }
+        }
+        return null;
+      },
+      resetMessageCounter: function (id) {
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].id === parseInt(id)) {
+          events[i].newMessages = 0;
+        }
+      }
+    },
+      getMessages: function (id) {
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].id === parseInt(id)) {
+            return events[i].messages;
           }
         }
         return null;

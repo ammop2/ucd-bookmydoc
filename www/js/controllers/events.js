@@ -22,6 +22,28 @@ angular.module('ctrl.events', [])
     $scope.doctor = {};
     $scope.doctor.selected = {};
 
+    // ****** Show Messages ******
+
+    $ionicModal.fromTemplateUrl('templates/show-messages.html', {
+      scope: $scope,
+      animation: 'slide-in-right'
+    }).then(function (modal) {
+      $scope.messages = modal;
+    });
+
+    $scope.showMessages = function (eventId) {
+      $scope.messages.data = Events.getMessages(eventId);
+      Events.resetMessageCounter(eventId);
+      console.log(eventId);
+      console.log($scope.messages.data);
+      $scope.messages.show();
+    };
+
+    $scope.closeMessages = function () {
+      $scope.messages.hide();
+    };
+    // ***************************
+
     $ionicModal.fromTemplateUrl('templates/add-event.html', {
       scope: $scope,
       animation: 'slide-in-up'
@@ -35,8 +57,6 @@ angular.module('ctrl.events', [])
 
     $scope.save = function () {
       $scope.modal.hide();
-      console.log($scope.doctor.selected);
-      console.log($scope.healthinstitutes.selected);
 
       var event = {
         title: "Neue Anfrage",
@@ -52,7 +72,6 @@ angular.module('ctrl.events', [])
     };
 
     $scope.close = function () {
-      console.log($scope.urgencies.selected);
       $scope.modal.hide();
     };
 
