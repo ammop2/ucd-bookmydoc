@@ -4,11 +4,18 @@
   </ion-header-bar>
   <ion-content>
     <ion-searchbar ng-model="healthinstitutes"></ion-searchbar>
-    <ion-list>
-      <ion-item class="item item-thumbnail-left item-remove-animate" ng-repeat="healthinstitute in healthinstitutes">
-        <img src={{healthinstitute.img}}>
-        <h2>{{healthinstitute.title}}</h2>
-      </ion-item>
+    <ion-list class="list">
+      <div  ng-repeat="healthinstitute in allHealthinstitutes">
+        <div class="item">
+          {{healthinstitute.title}}
+        </div>
+        <div ng-repeat="doctor in healthinstitute.doctors" ng-click="addDoctor(healthinstitute.id, doctor.id)">
+          <a class="item item-avatar" href="#">
+            <img src={{doctor.img}}>
+            <h2>{{doctor.name}} {{doctor.surname}}</h2>
+          </a>
+        </div>
+      </div>
     </ion-list>
     <button class="item button button-light button-full" ng-click="closeDoctorModal()">
       Abbrechen

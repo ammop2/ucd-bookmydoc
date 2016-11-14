@@ -10,7 +10,12 @@ angular.module('ctrl.settings', [])
 
     $scope.patient = PatientData.all();
 
-    $scope.healthinstitutes = PatientData.getHealthinstitutes();
+    $scope.patientHealthinstitutes = PatientData.getHealthinstitutes();
+    $scope.allHealthinstitutes = HealthInstitute.getDummyData();
+
+    // we try to find all the doctors which haven't been add to the patient
+    // todo
+
 
     $ionicModal.fromTemplateUrl('templates/tab-account-addDoctor.html', {
       scope: $scope,
@@ -18,6 +23,16 @@ angular.module('ctrl.settings', [])
     }).then(function(modal) {
       $scope.doctorModal = modal;
     });
+
+    $scope.addDoctor = function(healthinstituteId, doctorId){
+      PatientData.addDoctor(healthinstituteId, doctorId);
+      $scope.closeDoctorModal();
+    }
+
+    $scope.removeDoctor = function(doctorId){
+      PatientData.removeDoctor(doctorId);
+      $scope.closeDoctorModal();
+    }
 
     $scope.closeDoctorModal = function() {
       $scope.doctorModal.hide();

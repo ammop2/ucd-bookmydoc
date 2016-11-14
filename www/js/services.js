@@ -68,15 +68,27 @@ angular.module('starter.services', [])
       },
       addDoctor: function(healthinstituteId, doctorId){
         var i = 0;
-        for(i; i < patient.healthinstitutes.length; i ++){
+        var doctor = Doctors.get(doctorId);
+        for(i; i < patient.healthinstitutes.length; i++){
           if(patient.healthinstitutes[i].id == healthinstituteId){
-            patient.healthinstitutes.push(Doctors.get(doctorId));
+            patient.healthinstitutes[i].doctors.push(doctor);
             return;
           }
         }
         // looks like healthinstitute is not yet added to array
-        patient.healthinstitutes.push(HealthInstitute.get(healthinstituteId));
-
+        var hiData = HealthInstitute.get(healthinstituteId);
+        hiData.doctors.push(doctor)
+        patient.healthinstitutes.push(hiData);
+        return;
+      },
+      removeDoctor: function (doctorId) {
+        for(var i = 0; i < patient.healthinstitutes.length; i++){
+          for(var j = 0; j < patient.healthinstitutes[i].doctors.length; j++){
+            if(patient.healthinstitutes[i].doctors.id = doctorId){
+              patient.healthinstitutes[i].doctors.splice(j, 1);
+            }
+          }
+        }
       }
     }
   })
@@ -103,6 +115,13 @@ angular.module('starter.services', [])
         fullname: "H. Meister",
         img: "img/doktor3.jpg"
       },
+      {
+        id: 3,
+        surname: "Launer",
+        name: "Lukas",
+        fullname: "L. Launer",
+        img: "img/doktor3.jpg"
+      },
     ];
     return {
       all: function(){
@@ -119,22 +138,18 @@ angular.module('starter.services', [])
     }
   })
   .factory('HealthInstitute',function(Doctors){
-    var doc1 = Doctors.get(0);
-    var doc2 = Doctors.get(1);
-    var doc3 = Doctors.get(2);
-
     var hi = [
       {
         id: 0,
         title: 'Spital Thun',
         img: 'img/spitalthun.jpg',
-        doctors: [doc1, doc2]
+        doctors: []
       },
       {
         id: 1,
         title: 'Inselspital Bern',
         img: 'img/inselspital.jpg',
-        doctors: [doc3]
+        doctors: []
       }
     ];
     return {
@@ -151,13 +166,35 @@ angular.module('starter.services', [])
       },
       getPatientDummyData: function(){
         var doc1 = Doctors.get(0);
+
+        var hi = [
+          {
+            id: 0,
+            title: 'Spital Thun',
+            img: 'img/spitalthun.jpg',
+            doctors: [doc1]
+          }
+        ];
+        return hi;
+      },
+      getDummyData: function(){
+        var doc1 = Doctors.get(0);
         var doc2 = Doctors.get(1);
+        var doc3 = Doctors.get(2);
+        var doc4 = Doctors.get(3);
+
         var hi = [
           {
             id: 0,
             title: 'Spital Thun',
             img: 'img/spitalthun.jpg',
             doctors: [doc1, doc2]
+          },
+          {
+            id: 1,
+            title: 'Inselspital Bern',
+            img: 'img/inselspital.jpg',
+            doctors: [doc3, doc4]
           }
         ];
         return hi;
@@ -233,7 +270,7 @@ angular.module('starter.services', [])
     {
       id: 2,
       title: 'Operation Kniegelenk',
-      doctor: hi1.doctors[1],
+      doctor: hi1.doctors[0],
       location: hi1.title,
       location_img: hi1.img,
       date: '23.3.2017',
