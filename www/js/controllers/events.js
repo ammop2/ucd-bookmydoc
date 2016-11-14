@@ -63,8 +63,9 @@ angular.module('ctrl.events', [])
         location_img: $scope.healthinstitutes.selected.img,
         doctor: $scope.doctor.selected.fullname,
         description: $scope.symptoms.toString(),
+        newMessages: 0,
         status: 'pending',
-        messages: 0,
+        messages: {},
       }
       Events.add(event);
     };

@@ -49,13 +49,14 @@ angular.module('starter.services', [])
     };
   })
 
-  .factory('PatientData',function(HealthInstitute){
+  .factory('PatientData',function(HealthInstitute, Doctors){
+
     var patient = {
       img: "img/mila.png",
       fullname: "Mila Kunis",
       birthdate: "14.09.1983",
       placeOfBirth: "Ukraine",
-      healthinstitutes: [HealthInstitute.get(0), HealthInstitute.get(1)]
+      healthinstitutes: HealthInstitute.getPatientDummyData()
     }
     return{
       all: function(){
@@ -64,6 +65,18 @@ angular.module('starter.services', [])
       },
       getHealthinstitutes: function(){
         return patient.healthinstitutes;
+      },
+      addDoctor: function(healthinstituteId, doctorId){
+        var i = 0;
+        for(i; i < patient.healthinstitutes.length; i ++){
+          if(patient.healthinstitutes[i].id == healthinstituteId){
+            patient.healthinstitutes.push(Doctors.get(doctorId));
+            return;
+          }
+        }
+        // looks like healthinstitute is not yet added to array
+        patient.healthinstitutes.push(HealthInstitute.get(healthinstituteId));
+
       }
     }
   })
@@ -106,7 +119,6 @@ angular.module('starter.services', [])
     }
   })
   .factory('HealthInstitute',function(Doctors){
-
     var doc1 = Doctors.get(0);
     var doc2 = Doctors.get(1);
     var doc3 = Doctors.get(2);
@@ -116,7 +128,7 @@ angular.module('starter.services', [])
         id: 0,
         title: 'Spital Thun',
         img: 'img/spitalthun.jpg',
-        doctors: [doc1,doc2]
+        doctors: [doc1, doc2]
       },
       {
         id: 1,
@@ -127,7 +139,6 @@ angular.module('starter.services', [])
     ];
     return {
       all: function(){
-        console.log(hi);
         return hi;
       },
       get: function(id){
@@ -137,6 +148,19 @@ angular.module('starter.services', [])
           }
         }
         return null;
+      },
+      getPatientDummyData: function(){
+        var doc1 = Doctors.get(0);
+        var doc2 = Doctors.get(1);
+        var hi = [
+          {
+            id: 0,
+            title: 'Spital Thun',
+            img: 'img/spitalthun.jpg',
+            doctors: [doc1, doc2]
+          }
+        ];
+        return hi;
       }
     }
   })
@@ -154,16 +178,17 @@ angular.module('starter.services', [])
     }
 
   })
-  .factory('Events', function (HealthInstitute) {
+  .factory('Events', function (PatientData, HealthInstitute) {
     // get some hi to put in the events
-    var hi1 = HealthInstitute.get(0);
-    var hi2 = HealthInstitute.get(1);
+    var hi = PatientData.getHealthinstitutes();
+    hi1 = hi[0];
+    hi2 = hi[1];
 
     var events = [{
       id: 0,
       title: 'Bauchschmerzen',
       location: hi1.title,
-      doctor: hi1.doctors[0].fullname,
+      doctor: hi1.doctors[0],
       location_img: hi1.img,
       date: '23.12.2016',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
@@ -180,9 +205,9 @@ angular.module('starter.services', [])
     {
       id: 1,
       title: 'Jährliche Untersuchung',
-      location: hi2.title,
-      doctor: hi2.doctors[0].fullname,
-      location_img: hi2.img,
+      location: hi1.title,
+      doctor: hi1.doctors[0],
+      location_img: hi1.img,
       date: '30.12.2016',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
@@ -208,8 +233,8 @@ angular.module('starter.services', [])
     {
       id: 2,
       title: 'Operation Kniegelenk',
+      doctor: hi1.doctors[1],
       location: hi1.title,
-      doctor: hi1.doctors[1].fullname,
       location_img: hi1.img,
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',

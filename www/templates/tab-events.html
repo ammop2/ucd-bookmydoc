@@ -11,7 +11,7 @@
               <img src={{event.location_img}} />
               <h2>{{event.title}}</h2>
               <p>{{event.location}}</p>
-              <p>{{event.doctor}}</p>
+              <p>{{event.doctor.fullname}}</p>
               <p>{{event.date}}</p>
               <div class="status col item-borderless">
                 <ion-icon class="icon balanced ion-checkmark-round" ng-if="event.status == 'accepted'"> Bestätigt</ion-icon>
