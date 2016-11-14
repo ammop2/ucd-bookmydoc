@@ -48,6 +48,25 @@ angular.module('starter.services', [])
       }
     };
   })
+
+  .factory('PatientData',function(HealthInstitute){
+    var patient = {
+      img: "img/mila.png",
+      fullname: "Mila Kunis",
+      birthdate: "14.09.1983",
+      placeOfBirth: "Ukraine",
+      healthinstitutes: [HealthInstitute.get(0), HealthInstitute.get(1)]
+    }
+    return{
+      all: function(){
+        console.log(patient);
+        return patient;
+      },
+      getHealthinstitutes: function(){
+        return patient.healthinstitutes;
+      }
+    }
+  })
   .factory('Doctors', function(){
     var docs = [
       {

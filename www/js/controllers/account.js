@@ -4,9 +4,11 @@ angular.module('ctrl.settings', [])
       $location.path('tab/events');
     }
   })
-  .controller('SettingsCtrl', function ($scope, $ionicPopup, $ionicModal, HealthInstitute, Krankenkassen) {
+  .controller('SettingsCtrl', function ($scope, $ionicPopup, $ionicModal, HealthInstitute, PatientData, Krankenkassen) {
     $scope.kks = Krankenkassen.all();
     $scope.kk = $scope.kks[0];
+
+    $scope.patient = PatientData.all();
 
     $scope.healthinstitutes = HealthInstitute.all();
 

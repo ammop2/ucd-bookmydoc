@@ -4,7 +4,7 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, HealthInstitute, Doctors, Symptoms, $location) {
+  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
 
     // Definition
     $scope.symptoms = [];
@@ -17,8 +17,8 @@ angular.module('ctrl.events', [])
     $scope.events = Events.all();
 
     // healthinstitute (Spitäler, "Hausarzt..."
-    $scope.healthinstitutes = HealthInstitute.all();
-    $scope.healthinstitutes.selected = HealthInstitute.get(0);
+    $scope.healthinstitutes = PatientData.getHealthinstitutes();
+    $scope.healthinstitutes.selected = $scope.healthinstitutes[0];
 
     // ****** Show Messages Modal ******
 
