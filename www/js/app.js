@@ -8,7 +8,7 @@
 
 
 
-angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ctrl.events', 'ctrl.settings'])
+angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', 'ctrl.events', 'ctrl.settings', 'ctrl.docs'])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
@@ -66,12 +66,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services', '
         }
       }
     })
-  .state('tab.chats', {
-      url: '/chats',
+  .state('tab.docs', {
+      url: '/docs',
       views: {
-        'tab-chats': {
-          templateUrl: 'templates/tab-chats.html',
-          controller: 'ChatsCtrl'
+        'tab-docs': {
+          templateUrl: 'templates/tab-docs.html',
+          controller: 'DocsCtrl'
         }
       }
     })
