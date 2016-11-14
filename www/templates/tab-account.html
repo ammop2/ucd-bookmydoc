@@ -2,9 +2,10 @@
   <ion-content>
     <ion-list>
       <div class="item item-thumbnail-left">
-        <img src="img/mila.png">
-        <h2>Mila Kunis</h2>
-        <p>14.09.1983 - Ukraine</p>
+        <img src={{patient.img}}>
+        <h2>{{patient.fullname}}</h2>
+        <p>{{patient.birthdate}}</p>
+        <p>{{patient.placeOfBirth}}</p>
       </div>
       <div class="item item-divider item-icon-right">
         Krankenkasse
@@ -18,7 +19,7 @@
         <i ng-click="openDoctorModal()" class="icon ion-android-add"></i>
       </div>
       <ion-list class="list">
-        <div  ng-repeat="healthinstitute in healthinstitutes">
+        <div  ng-repeat="healthinstitute in patientHealthinstitutes">
           <div class="item">
             {{healthinstitute.title}}
           </div>
@@ -27,9 +28,9 @@
               <img src={{doctor.img}}>
               <h2>{{doctor.name}} {{doctor.surname}}</h2>
             </a>
-        </div>
-        </div>
-        </ion-list>
+          </div>
+          </div>
+      </ion-list>
       <ion-list>
   </ion-content>
 </ion-view>

@@ -4,23 +4,43 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, HealthInstitute, Doctors, Symptoms, $location) {
-    $scope.events = Events.all();
+  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
+
+    // Definition
     $scope.symptoms = [];
-    $scope.urgencies = [
-      'Notfall',
-      'Dringend',
-      'Normal'
-    ];
+    $scope.title = {};
+    $scope.doctor = {};
+
+    $scope.urgencies = Urgencies.all();
     $scope.urgencies.selected = 'Notfall';
 
-    // healthinstitute (Spitäler, "Hausarzt..."
-    $scope.healthinstitutes = HealthInstitute.all();
-    $scope.healthinstitutes.selected = HealthInstitute.get(0);
+    $scope.events = Events.all();
 
-    // Doktor
-    $scope.doctor = {};
-    $scope.doctor.selected = {};
+    // healthinstitute (Spitäler, "Hausarzt..."
+    $scope.healthinstitutes = PatientData.getHealthinstitutes();
+    $scope.healthinstitutes.selected = $scope.healthinstitutes[0];
+
+    // ****** Show Messages Modal ******
+
+    $ionicModal.fromTemplateUrl('templates/show-messages.html', {
+      scope: $scope,
+      animation: 'slide-in-right'
+    }).then(function (modal) {
+      $scope.messages = modal;
+    });
+
+    $scope.showMessages = function (eventId) {
+      $scope.messages.data = Events.getMessages(eventId);
+      $scope.messages.show();
+      Events.resetMessageCounter(eventId);
+    };
+
+    $scope.closeMessages = function () {
+      $scope.messages.hide();
+    };
+    // ***************************
+
+    // ****** Add Event Modal ******
 
     $ionicModal.fromTemplateUrl('templates/add-event.html', {
       scope: $scope,
@@ -35,26 +55,26 @@ angular.module('ctrl.events', [])
 
     $scope.save = function () {
       $scope.modal.hide();
-      console.log($scope.doctor.selected);
-      console.log($scope.healthinstitutes.selected);
 
       var event = {
-        title: "Neue Anfrage",
+        title: $scope.title.text,
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,
         doctor: $scope.doctor.selected.fullname,
         description: $scope.symptoms.toString(),
+        newMessages: 0,
         status: 'pending',
-        messages: 0,
+        messages: {},
       }
       Events.add(event);
     };
 
     $scope.close = function () {
-      console.log($scope.urgencies.selected);
       $scope.modal.hide();
     };
+
+    // ***************************
 
     function addTextSymptom() {
       var addTextScope = $scope.$new();

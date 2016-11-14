@@ -48,6 +48,50 @@ angular.module('starter.services', [])
       }
     };
   })
+
+  .factory('PatientData',function(HealthInstitute, Doctors){
+
+    var patient = {
+      img: "img/mila.png",
+      fullname: "Mila Kunis",
+      birthdate: "14.09.1983",
+      placeOfBirth: "Ukraine",
+      healthinstitutes: HealthInstitute.getPatientDummyData()
+    }
+    return{
+      all: function(){
+        console.log(patient);
+        return patient;
+      },
+      getHealthinstitutes: function(){
+        return patient.healthinstitutes;
+      },
+      addDoctor: function(healthinstituteId, doctorId){
+        var i = 0;
+        var doctor = Doctors.get(doctorId);
+        for(i; i < patient.healthinstitutes.length; i++){
+          if(patient.healthinstitutes[i].id == healthinstituteId){
+            patient.healthinstitutes[i].doctors.push(doctor);
+            return;
+          }
+        }
+        // looks like healthinstitute is not yet added to array
+        var hiData = HealthInstitute.get(healthinstituteId);
+        hiData.doctors.push(doctor)
+        patient.healthinstitutes.push(hiData);
+        return;
+      },
+      removeDoctor: function (doctorId) {
+        for(var i = 0; i < patient.healthinstitutes.length; i++){
+          for(var j = 0; j < patient.healthinstitutes[i].doctors.length; j++){
+            if(patient.healthinstitutes[i].doctors.id = doctorId){
+              patient.healthinstitutes[i].doctors.splice(j, 1);
+            }
+          }
+        }
+      }
+    }
+  })
   .factory('Doctors', function(){
     var docs = [
       {
@@ -71,6 +115,13 @@ angular.module('starter.services', [])
         fullname: "H. Meister",
         img: "img/doktor3.jpg"
       },
+      {
+        id: 3,
+        surname: "Launer",
+        name: "Lukas",
+        fullname: "L. Launer",
+        img: "img/doktor3.jpg"
+      },
     ];
     return {
       all: function(){
@@ -87,28 +138,22 @@ angular.module('starter.services', [])
     }
   })
   .factory('HealthInstitute',function(Doctors){
-
-    var doc1 = Doctors.get(0);
-    var doc2 = Doctors.get(1);
-    var doc3 = Doctors.get(2);
-
     var hi = [
       {
         id: 0,
         title: 'Spital Thun',
         img: 'img/spitalthun.jpg',
-        doctors: [doc1,doc2]
+        doctors: []
       },
       {
         id: 1,
         title: 'Inselspital Bern',
         img: 'img/inselspital.jpg',
-        doctors: [doc3]
+        doctors: []
       }
     ];
     return {
       all: function(){
-        console.log(hi);
         return hi;
       },
       get: function(id){
@@ -118,46 +163,137 @@ angular.module('starter.services', [])
           }
         }
         return null;
+      },
+      getPatientDummyData: function(){
+        var doc1 = Doctors.get(0);
+
+        var hi = [
+          {
+            id: 0,
+            title: 'Spital Thun',
+            img: 'img/spitalthun.jpg',
+            doctors: [doc1]
+          }
+        ];
+        return hi;
+      },
+      getDummyData: function(){
+        var doc1 = Doctors.get(0);
+        var doc2 = Doctors.get(1);
+        var doc3 = Doctors.get(2);
+        var doc4 = Doctors.get(3);
+
+        var hi = [
+          {
+            id: 0,
+            title: 'Spital Thun',
+            img: 'img/spitalthun.jpg',
+            doctors: [doc1, doc2]
+          },
+          {
+            id: 1,
+            title: 'Inselspital Bern',
+            img: 'img/inselspital.jpg',
+            doctors: [doc3, doc4]
+          }
+        ];
+        return hi;
       }
     }
   })
-  .factory('Events', function (HealthInstitute) {
+  .factory('Urgencies', function(){
+    var urgencies = [
+      'Notfall',
+      'Dringend',
+      'Normal'
+    ];
+
+    return {
+      all: function () {
+        return urgencies;
+      }
+    }
+
+  })
+  .factory('Events', function (PatientData, HealthInstitute) {
     // get some hi to put in the events
-    var hi1 = HealthInstitute.get(0);
-    var hi2 = HealthInstitute.get(1);
+    var hi = PatientData.getHealthinstitutes();
+    hi1 = hi[0];
+    hi2 = hi[1];
 
     var events = [{
       id: 0,
       title: 'Bauchschmerzen',
       location: hi1.title,
-      doctor: hi1.doctors[0].fullname,
+      doctor: hi1.doctors[0],
       location_img: hi1.img,
       date: '23.12.2016',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
       status: 'declined',
-      messages: 1
+      newMessages: 1,
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     },
     {
       id: 1,
       title: 'Jährliche Untersuchung',
-      location: hi2.title,
-      doctor: hi2.doctors[0].fullname,
-      location_img: hi2.img,
+      location: hi1.title,
+      doctor: hi1.doctors[0],
+      location_img: hi1.img,
       date: '30.12.2016',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
-      messages: 0
+      newMessages: 0,
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        },
+        {
+          id: 1,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "patient"
+        },
+        {
+          id: 2,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     },
     {
-      id: 1,
+      id: 2,
       title: 'Operation Kniegelenk',
+      doctor: hi1.doctors[0],
       location: hi1.title,
-      doctor: hi1.doctors[1].fullname,
       location_img: hi1.img,
       date: '23.3.2017',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
-      messages: 2
+      newMessages: 1,
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        },
+        {
+          id: 1,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "patient"
+        },
+        {
+          id: 2,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     }
 
     ];
@@ -173,6 +309,21 @@ angular.module('starter.services', [])
         for (var i = 0; i < events.length; i++) {
           if (events[i].id === parseInt(id)) {
             return events[i];
+          }
+        }
+        return null;
+      },
+      resetMessageCounter: function (id) {
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].id === parseInt(id)) {
+            events[i].newMessages = 0;
+          }
+        }
+      },
+      getMessages: function (id) {
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].id === parseInt(id)) {
+            return events[i].messages;
           }
         }
         return null;

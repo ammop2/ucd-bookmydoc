@@ -4,11 +4,18 @@ angular.module('ctrl.settings', [])
       $location.path('tab/events');
     }
   })
-  .controller('SettingsCtrl', function ($scope, $ionicPopup, $ionicModal, HealthInstitute, Krankenkassen) {
+  .controller('SettingsCtrl', function ($scope, $ionicPopup, $ionicModal, PatientData, HealthInstitute, Krankenkassen) {
     $scope.kks = Krankenkassen.all();
     $scope.kk = $scope.kks[0];
 
-    $scope.healthinstitutes = HealthInstitute.all();
+    $scope.patient = PatientData.all();
+
+    $scope.patientHealthinstitutes = PatientData.getHealthinstitutes();
+    $scope.allHealthinstitutes = HealthInstitute.getDummyData();
+
+    // we try to find all the doctors which haven't been add to the patient
+    // todo
+
 
     $ionicModal.fromTemplateUrl('templates/tab-account-addDoctor.html', {
       scope: $scope,
@@ -16,6 +23,16 @@ angular.module('ctrl.settings', [])
     }).then(function(modal) {
       $scope.doctorModal = modal;
     });
+
+    $scope.addDoctor = function(healthinstituteId, doctorId){
+      PatientData.addDoctor(healthinstituteId, doctorId);
+      $scope.closeDoctorModal();
+    }
+
+    $scope.removeDoctor = function(doctorId){
+      PatientData.removeDoctor(doctorId);
+      $scope.closeDoctorModal();
+    }
 
     $scope.closeDoctorModal = function() {
       $scope.doctorModal.hide();
