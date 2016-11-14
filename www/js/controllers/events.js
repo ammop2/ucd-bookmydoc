@@ -4,25 +4,23 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, HealthInstitute, Doctors, Symptoms, $location) {
-    $scope.events = Events.all();
+  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, HealthInstitute, Doctors, Symptoms, $location) {
+
+    // Definition
     $scope.symptoms = [];
-    $scope.urgencies = [
-      'Notfall',
-      'Dringend',
-      'Normal'
-    ];
+    $scope.title = {};
+    $scope.doctor = {};
+
+    $scope.urgencies = Urgencies.all();
     $scope.urgencies.selected = 'Notfall';
+
+    $scope.events = Events.all();
 
     // healthinstitute (Spitäler, "Hausarzt..."
     $scope.healthinstitutes = HealthInstitute.all();
     $scope.healthinstitutes.selected = HealthInstitute.get(0);
 
-    // Doktor
-    $scope.doctor = {};
-    $scope.doctor.selected = {};
-
-    // ****** Show Messages ******
+    // ****** Show Messages Modal ******
 
     $ionicModal.fromTemplateUrl('templates/show-messages.html', {
       scope: $scope,
@@ -33,16 +31,16 @@ angular.module('ctrl.events', [])
 
     $scope.showMessages = function (eventId) {
       $scope.messages.data = Events.getMessages(eventId);
-      Events.resetMessageCounter(eventId);
-      console.log(eventId);
-      console.log($scope.messages.data);
       $scope.messages.show();
+      Events.resetMessageCounter(eventId);
     };
 
     $scope.closeMessages = function () {
       $scope.messages.hide();
     };
     // ***************************
+
+    // ****** Add Event Modal ******
 
     $ionicModal.fromTemplateUrl('templates/add-event.html', {
       scope: $scope,
@@ -59,7 +57,7 @@ angular.module('ctrl.events', [])
       $scope.modal.hide();
 
       var event = {
-        title: "Neue Anfrage",
+        title: $scope.title.text,
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,
@@ -74,6 +72,8 @@ angular.module('ctrl.events', [])
     $scope.close = function () {
       $scope.modal.hide();
     };
+
+    // ***************************
 
     function addTextSymptom() {
       var addTextScope = $scope.$new();

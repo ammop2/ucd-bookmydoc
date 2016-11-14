@@ -121,6 +121,20 @@ angular.module('starter.services', [])
       }
     }
   })
+  .factory('Urgencies', function(){
+    var urgencies = [
+      'Notfall',
+      'Dringend',
+      'Normal'
+    ];
+
+    return {
+      all: function () {
+        return urgencies;
+      }
+    }
+
+  })
   .factory('Events', function (HealthInstitute) {
     // get some hi to put in the events
     var hi1 = HealthInstitute.get(0);
@@ -219,12 +233,12 @@ angular.module('starter.services', [])
         return null;
       },
       resetMessageCounter: function (id) {
-      for (var i = 0; i < events.length; i++) {
-        if (events[i].id === parseInt(id)) {
-          events[i].newMessages = 0;
+        for (var i = 0; i < events.length; i++) {
+          if (events[i].id === parseInt(id)) {
+            events[i].newMessages = 0;
+          }
         }
-      }
-    },
+      },
       getMessages: function (id) {
         for (var i = 0; i < events.length; i++) {
           if (events[i].id === parseInt(id)) {
