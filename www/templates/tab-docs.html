@@ -1,16 +1,23 @@
-<ion-view view-title="Chats">
+<ion-view view-title="Rezepte">
   <ion-content>
     <ion-list>
-      <ion-item class="item-remove-animate item-avatar item-icon-right" ng-repeat="chat in chats" type="item-text-wrap" href="#/tab/chats/{{chat.id}}">
-        <img ng-src="{{chat.face}}">
-        <h2>{{chat.name}}</h2>
-        <p>{{chat.lastText}}</p>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-
-        <ion-option-button class="button-assertive" ng-click="remove(chat)">
-          Delete
-        </ion-option-button>
+      <div class="item item-divider">
+        Offene
+      </div>
+      <ion-item class="item-button-right" ng-repeat="item in items | filter:{ bezogen: '!' }" type="item-text-wrap" href="#/tab/docs/{{item.id}}">
+        <h2>{{item.titel}}</h2>
+        <p>{{item.arzt}} - {{item.datum}}</p>
       </ion-item>
+
+
+      <div class="item item-divider">
+        bezogen
+      </div>
+      <ion-item class="item-button-right" ng-repeat="item in items| filter:{ bezogen: '' }" type="item-text-wrap" href="#/tab/docs/{{item.id}}">
+        <h2>{{item.titel}}</h2>
+        <p>{{item.arzt}} - {{item.datum}}</p>
+      </ion-item>
+
     </ion-list>
   </ion-content>
 </ion-view>
