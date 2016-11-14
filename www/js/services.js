@@ -154,7 +154,23 @@ angular.module('starter.services', [])
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
       newMessages: 0,
-      messages: []
+      messages: [
+        {
+          id: 0,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        },
+        {
+          id: 1,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "patient"
+        },
+        {
+          id: 2,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "doctor"
+        }
+      ]
     },
     {
       id: 2,
@@ -174,6 +190,11 @@ angular.module('starter.services', [])
         },
         {
           id: 1,
+          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          sender: "patient"
+        },
+        {
+          id: 2,
           text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
           sender: "doctor"
         }

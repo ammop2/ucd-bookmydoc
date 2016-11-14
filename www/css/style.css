@@ -41,22 +41,24 @@
   width: 1.6em;
 }
 
-
 .message {
   border-radius: 5px;
   display: inline-block;
   padding: 10px 18px;
   position: relative;
   margin: 10px;
-  max-width: 80%;
+  max-width: 70%;
 }
 
 .message.doctor{
-  background-color: cadetblue;
-  color: white;
+  right:0;
+  float: right;
+  background-color: whitesmoke;
+  color: black;
 }
 
 .message.patient{
-  background-color: grey;
+  background-color: lightseagreen;
+  color: white;
 }
 
