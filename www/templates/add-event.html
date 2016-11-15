@@ -3,29 +3,13 @@
     <h1 class="title">Termin Hinzufügen</h1>
   </ion-header-bar>
   <ion-content>
-    <div class="list">
-      <label class="item item-input item-floating-label margin-bottom ">
-        <span class="input-label">Titel</span>
-        <input type="text" placeholder="Titel" ng-model="title.text">
-      </label>
-
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Spital, Ärztezentrum
-        </div>
-        <select ng-model="healthinstitutes.selected"
-                ng-options='healthinstitute.title for healthinstitute in healthinstitutes '/>
-        </select>
-      </label>
-      <label class="item item-input item-select">
-        <div class="input-label">
-          Arzt
-        </div>
-        <select
-          ng-disabled="!healthinstitutes.selected"
-          ng-model="doctor.selected"
-          ng-options="doctor.fullname for doctor in healthinstitutes.selected.doctors" />
-      </label>
+    <ion-list>
+      <ion-item class="item" ng-click="selectArzt()">
+        Arzt, Spital
+        <span class="item-note">
+      {{doctor.titel}}
+    </span>
+      </ion-item>
 
       <label class="margin-top margin-bottom item item-input item-select">
         <div class="input-label">
@@ -57,6 +41,6 @@
         Abbrechen
       </button>
 
-    </div>
+    </ion-list>
   </ion-content>
 </ion-modal-view>

@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 
 
-angular.module('starter', ['ionic', 'services.docs', 'starter.controllers', 'starter.services', 'ctrl.events', 'ctrl.settings', 'ctrl.docs'])
+angular.module('starter', ['ionic', 'services.doctors', 'services.docs', 'starter.controllers', 'starter.services', 'ctrl.events', 'ctrl.settings', 'ctrl.docs'])
 
   .run(function ($ionicPlatform) {
     $ionicPlatform.ready(function () {
@@ -99,4 +99,11 @@ angular.module('starter', ['ionic', 'services.docs', 'starter.controllers', 'sta
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/login');
 
-  });
+  })
+  .filter("filterText", function() {
+  return function (values, value) {
+    return values.filter(function (item) {
+      return item.searchText.indexOf(value) !== -1;
+    });
+  };
+});

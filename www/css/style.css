@@ -7,11 +7,40 @@
 }
 
 .login-wrapper{
-  margin-top: 150px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: stretch;
+}
+
+.login-content {
+  background-color: #ECF0F1;
+
+}
+
+.logo {
+  text-align: center;
+  padding-top: 100px;
+  padding-bottom: 30px;
+  font-family: 'Shrikhand', cursive;
+  font-size: 35px;
+  color: #ECF0F1;
+  background-color: #2C3E50;
+}
+.login-button {
+  color: #ECF0F1;
+  background-color: #2C3E50;
+}
+
+ion-content {
+  background-color: #ECF0F1;
+}
+
+ion-header-bar {
+  background-color: #2C3E50!important;
+}
+.title {
+  color: #ECF0F1!important;
 }
 
 .no-padding-lr{
