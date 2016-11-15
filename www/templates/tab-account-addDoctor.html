@@ -10,16 +10,9 @@
           {{healthinstitute.title}}
         </div>
         <div ng-repeat="doctor in healthinstitute.doctors" ng-click="addDoctor(healthinstitute.id, doctor.id)">
-          <a class="item item-avatar" href="#">
+          <div class="item item-avatar">
             <img src={{doctor.img}}>
             <h2>{{doctor.name}} {{doctor.surname}}</h2>
-
-
-              <span ng-repeat="i in getNumber(doctor.rating)">
-                <ion-icon class="icon ion-star"></ion-icon>
-              </span>
-
-          </a>
         </div>
       </div>
     </ion-list>

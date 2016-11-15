@@ -4,12 +4,25 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
+  .controller('EventsCtrl', function ($scope, doctors, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
 
     // Definition
     $scope.symptoms = [];
     $scope.title = {};
     $scope.doctor = {};
+    $scope.doctors = doctors.all();
+    $scope.selectDoc = {
+      searchText: ''
+    }
+
+    $scope.spitalSelected = function(spital) {
+      $scope.doctor = spital;
+      $scope.searchDocModal.hide();
+    }
+
+    $scope.closeSelectDoc = function() {
+      $scope.searchDocModal.hide();
+    }
 
     $scope.urgencies = Urgencies.all();
     $scope.urgencies.selected = 'Notfall';
@@ -38,6 +51,19 @@ angular.module('ctrl.events', [])
     $scope.closeMessages = function () {
       $scope.messages.hide();
     };
+
+
+    $ionicModal.fromTemplateUrl('templates/search-arzt.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.searchDocModal = modal;
+    });
+
+    $scope.selectArzt = function () {
+      $scope.searchDocModal.show();
+    };
+
     // ***************************
 
     // ****** Add Event Modal ******
@@ -61,7 +87,7 @@ angular.module('ctrl.events', [])
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,
-        doctor: $scope.doctor.selected.fullname,
+        doctor: $scope.doctor.title,
         description: $scope.symptoms.toString(),
         newMessages: 0,
         status: 'pending',

@@ -1,0 +1,15 @@
+<ion-view view-title="Detail">
+  <ion-content>
+    <ion-list>
+      <ion-item>
+        <h2>{{doc.titel}}</h2>
+        <p>{{doc.arzt}} - {{doc.datum}}</p>
+      </ion-item>
+
+      <button ng-if="!doc.bezogen" class="item button button-dark button-full" ng-click="markAsOrdered()">
+        bezogen?
+      </button>
+
+    </ion-list>
+  </ion-content>
+</ion-view>
