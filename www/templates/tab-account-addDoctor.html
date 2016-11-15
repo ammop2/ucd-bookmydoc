@@ -13,6 +13,12 @@
           <a class="item item-avatar" href="#">
             <img src={{doctor.img}}>
             <h2>{{doctor.name}} {{doctor.surname}}</h2>
+
+
+              <span ng-repeat="i in getNumber(doctor.rating)">
+                <ion-icon class="icon ion-star"></ion-icon>
+              </span>
+
           </a>
         </div>
       </div>

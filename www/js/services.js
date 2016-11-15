@@ -99,28 +99,32 @@ angular.module('starter.services', [])
         surname: "Schweizer",
         name: "Hans",
         fullname: "H. Schweizer",
-        img: "img/doktor1.jpg"
+        img: "img/doktor1.jpg",
+        rating: 5,
       },
       {
         id: 1,
         surname: "Müller",
         name: "Franziska",
         fullname: "F. Müller",
-        img: "img/doktor2.jpg"
+        img: "img/doktor2.jpg",
+        rating: 2,
       },
       {
         id: 2,
         surname: "Meister",
         name: "Hans",
         fullname: "H. Meister",
-        img: "img/doktor3.jpg"
+        img: "img/doktor3.jpg",
+        rating: 2,
       },
       {
         id: 3,
         surname: "Launer",
         name: "Lukas",
         fullname: "L. Launer",
-        img: "img/doktor3.jpg"
+        img: "img/doktor3.jpg",
+        rating: 4,
       },
     ];
     return {
