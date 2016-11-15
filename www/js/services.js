@@ -238,6 +238,13 @@ angular.module('starter.services', [])
       messages: [
         {
           id: 0,
+          text: " Titel: Bauchschmerzen <br>" +
+          "Dringlichkeit: Normal <br> " +
+          "Symptome: Fieber, Husten",
+          sender: "patient"
+        },
+        {
+          id: 1,
           text: "Hallo Frau Kunis. Bitte rufen Sie uns an 079 316 33 44",
           sender: "doctor"
         }

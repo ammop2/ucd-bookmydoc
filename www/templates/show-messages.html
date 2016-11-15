@@ -3,7 +3,7 @@
     <h1 class="title">Nachrichten</h1>
   </ion-header-bar>
   <ion-content>
-      <div class="message {{message.sender}}" ng-class="" ng-repeat="message in messages.data">{{message.text}}</div>
+      <div class="message {{message.sender}}" ng-class="" ng-repeat="message in messages.data" ng-bind-html="message.text"></div>
       <button class="item button button-light button-full" ng-click="closeMessages()">
         Abbrechen
       </button>

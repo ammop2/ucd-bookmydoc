@@ -33,10 +33,23 @@
           {{symptom}}
         </div>
       </div>
-
       <button class="item button button-dark button-full" ng-click="selectDate()">
         {{ selectedDateTime || 'Datum'}}
       </button>
+
+      <div class="item item-divider item-icon-right">
+        Media
+      </div>
+      <div class="item">
+        <button class="button button-grey" ng-click="save()" style="margin-right: 15px">
+          <i class="icon ion-ios-camera"></i>
+          Foto
+        </button>
+        <button class="button button-grey" ng-click="save()">
+          <i class="icon ion-mic-a"></i>
+          Sprachnachricht
+        </button>
+      </div>
 
       <button class="item button button-balanced button-full" ng-click="save()">
         Speichern
