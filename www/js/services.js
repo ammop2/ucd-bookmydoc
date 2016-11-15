@@ -238,7 +238,7 @@ angular.module('starter.services', [])
       messages: [
         {
           id: 0,
-          text: "Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.",
+          text: "Hallo Frau Kunis. Bitte rufen Sie uns an 079 316 33 44",
           sender: "doctor"
         }
       ]
