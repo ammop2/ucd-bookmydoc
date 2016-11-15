@@ -39,7 +39,7 @@ ion-content {
 ion-header-bar {
   background-color: #2C3E50!important;
 }
-.title {
+.title, .back-button, .back-text {
   color: #ECF0F1!important;
 }
 

@@ -5,14 +5,16 @@ angular.module('services.docs', [])
         id: 0,
         titel: 'Ritalin',
         datum: '1.1.2016',
-        arzt: 'Dr. Aklin'
+        arzt: 'Dr. Aklin',
+        img: '/img/ritalin.jpg'
       },
       {
         id: 1,
-        titel: 'Ritalin',
+        titel: 'Zeller Schlaf',
         datum: '1.1.2016',
         arzt: 'Dr. Aklin',
-        bezogen: '2.1.2016'
+        bezogen: '2.1.2016',
+        img: '/img/zeller.jpg'
       }
     ];
 

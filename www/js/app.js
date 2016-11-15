@@ -106,4 +106,15 @@ angular.module('starter', ['ionic', 'services.doctors', 'services.docs', 'starte
       return item.searchText.indexOf(value) !== -1;
     });
   };
+})
+  .filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
+
+    for (var i=0; i<total; i++) {
+      input.push(i);
+    }
+
+    return input;
+  };
 });

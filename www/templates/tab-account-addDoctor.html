@@ -14,7 +14,7 @@
             <img src={{doctor.img}}>
             <h2>{{doctor.name}} {{doctor.surname}}</h2>
             <div id="rating">
-              <span ng-repeat="">
+              <span ng-repeat="n in [] | range:doctor.rating">
                  <ion-icon class="icon assertive ion-ios-star" />
               </span>
             </div>
