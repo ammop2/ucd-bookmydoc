@@ -39,6 +39,11 @@ ion-content {
 ion-header-bar {
   background-color: #2C3E50!important;
 }
+
+.ion-ios-star-outline, .ion-ios-star {
+  color: #2C3E50!important;
+}
+
 .title, .back-button, .back-text {
   color: #ECF0F1!important;
 }
