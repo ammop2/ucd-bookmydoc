@@ -53,12 +53,22 @@ ion-header-bar {
   padding-right: 0px;
 }
 
+.no-padding{
+  padding: 0px;
+}
+
 .margin-top{
   margin-top: 30px;
 }
 
 .margin-bottom{
   margin-bottom: 30px;
+}
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
 }
 
 
@@ -94,6 +104,10 @@ ion-header-bar {
 .message.patient{
   background-color: lightseagreen;
   color: white;
+}
+
+#media .icon{
+  margin-right: 5px;
 }
 
 /* Animations */

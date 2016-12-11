@@ -20,15 +20,21 @@
               </div>
           </div>
           <div class="item item-body">
-              <ion-item class="row item item-borderless no-padding-lr">
-                  <button class="button button-stable" ng-click="cancel(event)" class="text-left col subdued">{{event.status == 'declined' ? 'Entfernen' : 'Absagen'}}</button>
+              <ion-item class="row item item-borderless no-padding">
+                  <div class="col no-padding">
+                    <button class="button button-stable" ng-click="cancel(event)" class="text-left col subdued">{{event.status == 'declined' ? 'Entfernen' : 'Absagen'}}</button>
+                  </div>
+                <div class="col no-padding">
+                  <button class="button button-stable" ng-click="" class="text-left col subdued">Verschieben</button>
+                </div>
+                <div class="col no-padding">
                   <i ng-click="showMessages(event.id)" class="col text-right">
                     <span class="circle assertive-bg" ng-if="event.newMessages > 0">{{event.newMessages}}</span>
                     <span class="circle balanced-bg" ng-if="event.newMessages == 0">
                       <ion-icon class="icon ion-chatbox-working"></ion-icon>
                     </span>
-
                   </i>
+                </div>
               </ion-item>
 
           </div>
