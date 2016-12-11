@@ -6,6 +6,7 @@
       </div>
       <ion-item class="item-button-right" ng-repeat="item in items | filter:{ bezogen: '!' }" type="item-text-wrap" href="#/tab/docs/{{item.id}}">
         <h2>{{item.titel}}</h2>
+        <p ng-show="item.against">Gegen: {{item.against}}</p>
         <p>{{item.arzt}} - {{item.datum}}</p>
       </ion-item>
 
@@ -15,6 +16,7 @@
       </div>
       <ion-item class="item-button-right" ng-repeat="item in items| filter:{ bezogen: '' }" type="item-text-wrap" href="#/tab/docs/{{item.id}}">
         <h2>{{item.titel}}</h2>
+        <p ng-show="item.against">Gegen: {{item.against}}</p>
         <p>{{item.arzt}} - {{item.datum}}</p>
       </ion-item>
 
