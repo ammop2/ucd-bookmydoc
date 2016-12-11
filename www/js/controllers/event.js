@@ -212,7 +212,7 @@ angular.module('ctrl.event', [])
       });
     }
 
-    $scope.changeDate = function (event){
+    $scope.changeDate = function (event, eventId) {
       var addScope = $scope.$new();
       addScope.dates = [];
 
@@ -236,6 +236,37 @@ angular.module('ctrl.event', [])
         cDate.setDate(cDate.getDate() + i);
       }
       addScope.selected =  addScope.dates[0];
+
+      addScope.slideHasChanged = function (index) {
+        addScope.selected =  addScope.dates[index];
+      }
+
+      var confirmPopup = $ionicPopup.confirm({
+        title: 'Termin',
+        templateUrl: 'templates/select-date.html',
+        scope:  addScope,
+        buttons: [
+          {text: 'Abbrechen'},
+          {
+            text: '<b>Auswählen</b>',
+            type: 'button-positive',
+            onTap: function (e) {
+              return  addScope.selected;
+            }
+          }]
+      });
+
+      confirmPopup.then(function (date) {
+        if (date) {
+          var datum = date.date.value;
+          $scope.selectedDateTime = datum.getDate() + '.' +
+            datum.getMonth() + '.' + datum.getFullYear() +
+            ' - ' + date.selectedTime.value;
+          // set new date on event object
+          Events.changeDate(eventId, $scope.selectedDateTime);
+        } else {
+        }
+      });
     }
 
     $scope.selectDate = function (event) {

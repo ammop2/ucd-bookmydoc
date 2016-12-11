@@ -124,6 +124,13 @@ angular.module('services.event', [])
       }
       return null;
     },
+    changeDate: function (id, newDate){
+      for (var i = 0; i < events.length; i++) {
+        if (events[i].id === parseInt(id)) {
+          events[i].date = newDate;
+        }
+      }
+    },
     add: function (event) {
       events.splice(0, 0, event);
     }
