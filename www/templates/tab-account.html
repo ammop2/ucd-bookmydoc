@@ -4,17 +4,21 @@
       <div class="item item-thumbnail-left">
         <img src={{patient.img}}>
         <h2>{{patient.fullname}}</h2>
-        <p>{{patient.birthdate}}</p>
-        <p>{{patient.placeOfBirth}}</p>
+        <p>Geburtsdatum: {{patient.birthdate}}</p>
+        <p>Land: {{patient.placeOfBirth}}</p>
       </div>
-      <div class="item item-divider item-icon-right">
+      <label class="item item-input">
+        <span class="input-label">AHV-Nummer</span>
+        <input type="text" value="{{patient.ahvNr}}">
+      </label>
+      <div class="item item-divider item-icon-right margin-top">
         Krankenkasse
         <i ng-click="setKK()" class="icon ion-android-add"></i>
       </div>
       <label class="item" ng-if="kk">
         {{kk}}
       </label>
-      <div class="item item-divider item-icon-right">
+      <div class="item item-divider item-icon-right margin-top">
         Arzt
         <i ng-click="openDoctorModal()" class="icon ion-android-add"></i>
       </div>

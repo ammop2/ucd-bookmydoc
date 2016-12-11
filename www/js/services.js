@@ -56,6 +56,7 @@ angular.module('starter.services', [])
       fullname: "Mila Kunis",
       birthdate: "14.09.1983",
       placeOfBirth: "Ukraine",
+      ahvNr: "756.3588.6565.21",
       healthinstitutes: HealthInstitute.getPatientDummyData()
     }
     return{
