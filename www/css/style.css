@@ -106,6 +106,10 @@ ion-header-bar {
   color: white;
 }
 
+.icon{
+  margin-right: 5px;
+}
+
 /* Animations */
 
 .slide-in-right {
