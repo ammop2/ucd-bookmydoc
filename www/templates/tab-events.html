@@ -10,13 +10,13 @@
           <div class="item item-avatar">
               <img src={{event.location_img}} />
               <h2>{{event.title}}</h2>
-              <p>{{event.location}}</p>
               <p>{{event.doctor.fullname}}</p>
+              <p>{{event.location}}</p>
               <p>{{event.date}}</p>
               <div class="status col item-borderless">
-                <ion-icon class="icon balanced ion-checkmark-round" ng-if="event.status == 'accepted'"> Bestätigt</ion-icon>
-                <ion-icon class="icon energized ion-android-time" ng-if="event.status == 'pending'"> Warten</ion-icon>
-                <ion-icon class="icon assertive ion-close-round" ng-if="event.status == 'declined'"> Abgelehnt</ion-icon>
+                <ion-icon class="icon balanced ion-checkmark-round" ng-if="event.status == 'accepted'"> Bestätigt, Termin findet statt</ion-icon>
+                <ion-icon class="icon energized ion-android-time" ng-if="event.status == 'pending'"> Bitte warten</ion-icon>
+                <ion-icon class="icon assertive ion-close-round" ng-if="event.status == 'declined'"> Abgelehnt, wir melden uns</ion-icon>
               </div>
           </div>
           <div class="item item-body">

@@ -127,7 +127,7 @@ angular.module('ctrl.event', [])
       }
 
       var textPopup = $ionicPopup.confirm({
-        title: 'Freitext',
+        title: 'Text eingeben',
         template: '<input type="text" ng-model="text.value" />',
         scope: addTextScope,
         buttons: [
@@ -155,7 +155,7 @@ angular.module('ctrl.event', [])
       }
 
       var textPopup = $ionicPopup.confirm({
-        title: 'Freitext',
+        title: 'Sypmtome auswählen',
         template: '<ion-list><ion-checkbox ng-repeat="tag in tags" ng-model="tag.selected">{{tag.title}}</ion-checkbox></ion-list>',
         scope: addTagScope,
         buttons: [
