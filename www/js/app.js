@@ -78,7 +78,7 @@ angular.module('starter', ['ionic', 'services.doctors', 'services.docs', 'starte
         url: '/docs',
         views: {
           'tab-docs': {
-            templateUrl: 'templates/tab-docs.html',
+            templateUrl: 'templates/tab-recipes.html',
             controller: 'DocsCtrl'
           }
         }

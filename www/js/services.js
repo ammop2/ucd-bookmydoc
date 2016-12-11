@@ -227,7 +227,7 @@ angular.module('starter.services', [])
 
     var events = [{
       id: 0,
-      title: 'Bauchschmerzen',
+      title: 'Fieber & Ausschlag',
       location: hi1.title,
       doctor: hi1.doctors[0],
       location_img: hi1.img,
@@ -238,13 +238,18 @@ angular.module('starter.services', [])
       messages: [
         {
           id: 0,
-          text: " Titel: Bauchschmerzen <br>" +
+          text: " Titel: Fieber & Ausschlag<br>" +
           "Dringlichkeit: Normal <br> " +
-          "Symptome: Fieber, Husten",
+          "Symptome: Fieber, Ausschlag",
           sender: "patient"
         },
         {
           id: 1,
+          text: '<img src="/img/ausschlag.jpg" width="200px" />',
+          sender: "patient"
+        },
+        {
+          id: 2,
           text: "Hallo Frau Kunis. Bitte rufen Sie uns an 079 316 33 44",
           sender: "doctor"
         }
