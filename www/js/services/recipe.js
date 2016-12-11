@@ -1,6 +1,6 @@
-angular.module('services.docs', [])
-  .factory('recepte', function () {
-    var recepte = [
+angular.module('services.recipe', [])
+  .factory('recipes', function () {
+    var recipes = [
       {
         id: 0,
         titel: 'Ritalin',
@@ -20,12 +20,12 @@ angular.module('services.docs', [])
 
     return {
       all: function () {
-        return recepte;
+        return recipes;
       },
       get: function (id) {
-        for (var i = 0; i < recepte.length; i++) {
-          if (recepte[i].id === parseInt(id)) {
-            return recepte[i];
+        for (var i = 0; i < recipes.length; i++) {
+          if (recipes[i].id === parseInt(id)) {
+            return recipes[i];
           }
         }
         return null;
