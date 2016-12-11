@@ -18,25 +18,27 @@
           <option ng-repeat="spez in spezis" ng-selected="spez.isSelected">{{spez.title}}</option>
         </select>
       </label>
-      <div  ng-repeat="healthinstitute in allHealthinstitutes">
-        <div class="item">
-          {{healthinstitute.title}}
-        </div>
-        <div ng-repeat="doctor in healthinstitute.doctors | filterText:selectDoc.searchText | filterType: cSpez.selected" ng-click="addDoctor(healthinstitute.id, doctor.id)">
-          <div class="item item-avatar">
-            <img src={{doctor.img}}>
-            <h2>{{doctor.name}} {{doctor.surname}}</h2>
-            <h3>{{doctor.typ}}</h3>
-            <div id="rating">
-              <span ng-repeat="n in [] | range:doctor.rating">
-                 <ion-icon class="icon assertive ion-ios-star" />
-              </span>
-              <span ng-repeat="n in [] |   range:5-doctor.rating">
-                 <ion-icon class="icon assertive ion-ios-star-outline" />
-              </span>
+        <div ng-repeat="healthinstitute in allHealthinstitutes">
+          <div ng-show="(healthinstitute.doctors | filterText:selectDoc.searchText | filterType: cSpez.selected).length">
+            <div class="item">
+              {{healthinstitute.title}}
             </div>
-           </div>
-        </div>
+          </div>
+          <div ng-repeat="doctor in healthinstitute.doctors | filterText:selectDoc.searchText | filterType: cSpez.selected" ng-click="addDoctor(healthinstitute.id, doctor.id)">
+            <div class="item item-avatar">
+              <img src={{doctor.img}}>
+              <h2>{{doctor.name}} {{doctor.surname}}</h2>
+              <h3>{{doctor.typ}}</h3>
+              <div id="rating">
+                <span ng-repeat="n in [] | range:doctor.rating">
+                   <ion-icon class="icon assertive ion-ios-star" />
+                </span>
+                <span ng-repeat="n in [] |   range:5-doctor.rating">
+                   <ion-icon class="icon assertive ion-ios-star-outline" />
+                </span>
+              </div>
+             </div>
+          </div>
       </div>
     </ion-list>
     <button class="item button button-light button-full" ng-click="closeDoctorModal()">
