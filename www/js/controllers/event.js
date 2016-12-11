@@ -100,6 +100,25 @@ angular.module('ctrl.event', [])
 
     // ***************************
 
+    // ****** Add Camera Modal ******
+
+    $ionicModal.fromTemplateUrl('templates/add-event-camera.html', {
+      scope: $scope,
+      animation: 'slide-in-up'
+    }).then(function (modal) {
+      $scope.modalCamera = modal;
+    });
+
+    $scope.openCamera = function () {
+      $scope.modalCamera.show();
+    };
+
+    $scope.closeCamera = function () {
+      $scope.modalCamera.hide();
+    };
+
+    // ***************************
+
     function addTextSymptom() {
       var addTextScope = $scope.$new();
       addTextScope.text = {

@@ -110,6 +110,13 @@ ion-header-bar {
   margin-right: 5px;
 }
 
+#camera{
+  background-image: url('../img/camera.jpg');
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+}
+
 /* Animations */
 
 .slide-in-right {
