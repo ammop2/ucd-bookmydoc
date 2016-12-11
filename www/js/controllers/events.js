@@ -4,19 +4,23 @@ angular.module('ctrl.events', [])
 
   })
 
-  .controller('EventsCtrl', function ($scope, doctors, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
+  .controller('EventsCtrl', function ($scope, doctors, HealthInstitute, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
 
     // Definition
     $scope.symptoms = [];
     $scope.title = {};
     $scope.doctor = {};
     $scope.doctors = doctors.all();
+
+    $scope.patientHealthinstitutes = PatientData.getHealthinstitutes();
+    $scope.allHealthinstitutes = HealthInstitute.getDummyData();
+
     $scope.selectDoc = {
       searchText: ''
     }
 
-    $scope.spitalSelected = function(spital) {
-      $scope.doctor = spital;
+    $scope.spitalSelected = function(doctor) {
+      $scope.doctor = doctor;
       $scope.searchDocModal.hide();
     }
 

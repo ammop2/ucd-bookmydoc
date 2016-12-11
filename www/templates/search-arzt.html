@@ -1,5 +1,28 @@
 <ion-modal-view>
   <ion-header-bar>
+    <h1 class="title">Select Arzt</h1>
+  </ion-header-bar>
+  <ion-content>
+    <ion-list class="list">
+      <div  ng-repeat="healthinstitute in patientHealthinstitutes">
+        <div class="item">
+          {{healthinstitute.title}}
+        </div>
+        <div ng-repeat="doctor in healthinstitute.doctors">
+          <a class="item item-avatar" ng-click="spitalSelected(doctor)">
+            <img src={{doctor.img}}>
+            <h2>{{doctor.name}} {{doctor.surname}}</h2>
+            <h3>{{doctor.typ}}</h3>
+          </a>
+        </div>
+      </div>
+    </ion-list>
+  </ion-content>
+</ion-modal-view>
+
+<!--
+<ion-modal-view>
+  <ion-header-bar>
     <h1 class="title">Arzt suchen</h1>
   </ion-header-bar>
   <ion-content>
@@ -17,4 +40,4 @@
       </button>
     </div>
   </ion-content>
-</ion-modal-view>
+</ion-modal-view>-->

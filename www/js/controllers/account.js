@@ -13,6 +13,39 @@ angular.module('ctrl.settings', [])
     $scope.patientHealthinstitutes = PatientData.getHealthinstitutes();
     $scope.allHealthinstitutes = HealthInstitute.getDummyData();
 
+    $scope.selectDoc = {
+      searchText: ''
+    }
+
+    $scope.cSpez = {
+      selected : ""
+    }
+    $scope.update = function () {
+    }
+
+    $scope.spezis = [
+      {
+        title: '',
+        isSelected: false
+      },
+      {
+        title: 'Hausarzt',
+        isSelected: false
+      },
+      {
+        title: 'Anästhesist',
+        isSelected: false
+      },
+      {
+        title: 'Dermatologe',
+        isSelected: false
+      },
+      {
+        title: 'Endokrinologe',
+        isSelected: false
+      }
+    ]
+
     // we try to find all the doctors which haven't been add to the patient
     // todo
 

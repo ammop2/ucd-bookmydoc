@@ -103,7 +103,13 @@ angular.module('starter', ['ionic', 'services.doctors', 'services.docs', 'starte
   .filter("filterText", function() {
   return function (values, value) {
     return values.filter(function (item) {
-      return item.searchText.indexOf(value) !== -1;
+      return item.surname.indexOf(value) !== -1 || item.name.indexOf(value) !== -1;
+    });
+  };
+}).filter("filterType", function() {
+  return function (values, value) {
+    return values.filter(function (item) {
+      return item.typ.indexOf(value) !== -1;
     });
   };
 })

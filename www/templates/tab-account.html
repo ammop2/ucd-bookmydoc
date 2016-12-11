@@ -24,9 +24,10 @@
             {{healthinstitute.title}}
           </div>
           <div ng-repeat="doctor in healthinstitute.doctors">
-            <a class="item item-avatar" href="#">
+            <a class="item item-avatar">
               <img src={{doctor.img}}>
               <h2>{{doctor.name}} {{doctor.surname}}</h2>
+              <h3>{{doctor.typ}}</h3>
             </a>
           </div>
           </div>

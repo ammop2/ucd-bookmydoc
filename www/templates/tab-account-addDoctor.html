@@ -5,14 +5,27 @@
   <ion-content>
     <ion-searchbar ng-model="healthinstitutes"></ion-searchbar>
     <ion-list class="list">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="selectDoc.searchText">
+      </label>
+      <label class="item item-input">
+        <div class="input-label">
+          Fachgebiet
+        </div>
+        <select ng-change="update()" ng-model="cSpez.selected" style="width: 100%; margin-right: 10px; font-size: 16px">
+          <option ng-repeat="spez in spezis" ng-selected="spez.isSelected">{{spez.title}}</option>
+        </select>
+      </label>
       <div  ng-repeat="healthinstitute in allHealthinstitutes">
         <div class="item">
           {{healthinstitute.title}}
         </div>
-        <div ng-repeat="doctor in healthinstitute.doctors" ng-click="addDoctor(healthinstitute.id, doctor.id)">
+        <div ng-repeat="doctor in healthinstitute.doctors | filterText:selectDoc.searchText | filterType: cSpez.selected" ng-click="addDoctor(healthinstitute.id, doctor.id)">
           <div class="item item-avatar">
             <img src={{doctor.img}}>
             <h2>{{doctor.name}} {{doctor.surname}}</h2>
+            <h3>{{doctor.typ}}</h3>
             <div id="rating">
               <span ng-repeat="n in [] | range:doctor.rating">
                  <ion-icon class="icon assertive ion-ios-star" />
@@ -30,3 +43,26 @@
     </button>
   </ion-content>
 </ion-modal-view>
+
+
+<!--
+<ion-modal-view>
+  <ion-header-bar>
+    <h1 class="title">Arzt suchen</h1>
+  </ion-header-bar>
+  <ion-content>
+    <div class="list list-inset">
+      <label class="item item-input">
+        <i class="icon ion-search placeholder-icon"></i>
+        <input type="text" placeholder="Search" ng-model="selectDoc.searchText">
+      </label>
+
+      <div  class="item" ng-click="spitalSelected(doc)" ng-repeat="doc in doctors | filterText:selectDoc.searchText">
+        {{doc.titel}}
+      </div>
+      <button class="item button button-light button-full" ng-click="closeSelectDoc()">
+        Abbrechen
+      </button>
+    </div>
+  </ion-content>
+</ion-modal-view>-->

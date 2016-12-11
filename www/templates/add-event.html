@@ -8,12 +8,19 @@
         <span class="input-label">Titel</span>
         <input type="text" ng-model="title.text">
       </label>
-      <ion-item class="item" ng-click="selectArzt()">
+      <ion-item class="item" ng-click="selectArzt()"  ng-if="!doctor.name">
         Arzt, Spital
-        <span class="item-note">
-      {{doctor.titel}}
-    </span>
+          <span class="item-note">
+          {{doctor.titel}}
+          </span>
       </ion-item>
+      <div ng-if="doctor.name">
+        <a class="item item-avatar"  ng-click="selectArzt()">
+          <img src={{doctor.img}}>
+          <h2>{{doctor.name}} {{doctor.surname}}</h2>
+          <h3>{{doctor.typ}}</h3>
+        </a>
+      </div>
 
       <label class="margin-top margin-bottom item item-input item-select">
         <div class="input-label">

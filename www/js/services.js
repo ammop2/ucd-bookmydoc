@@ -100,6 +100,7 @@ angular.module('starter.services', [])
         name: "Hans",
         fullname: "H. Schweizer",
         img: "img/doktor1.jpg",
+        typ: "Hausarzt",
         rating: 5,
       },
       {
@@ -108,6 +109,7 @@ angular.module('starter.services', [])
         name: "Franziska",
         fullname: "F. Müller",
         img: "img/doktor2.jpg",
+        typ: "Anästhesist",
         rating: 2,
       },
       {
@@ -116,6 +118,7 @@ angular.module('starter.services', [])
         name: "Hans",
         fullname: "H. Meister",
         img: "img/doktor3.jpg",
+        typ: "Dermatologe",
         rating: 2,
       },
       {
@@ -124,6 +127,7 @@ angular.module('starter.services', [])
         name: "Lukas",
         fullname: "L. Launer",
         img: "img/doktor3.jpg",
+        typ: "Endokrinologe",
         rating: 4,
       },
     ];
