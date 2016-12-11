@@ -25,7 +25,7 @@ angular.module('ctrl.events', [])
     }
 
     $scope.urgencies = Urgencies.all();
-    $scope.urgencies.selected = 'Notfall';
+    $scope.urgencies.selected = 'Normal';
 
     $scope.events = Events.all();
 

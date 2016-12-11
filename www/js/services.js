@@ -208,9 +208,9 @@ angular.module('starter.services', [])
   })
   .factory('Urgencies', function(){
     var urgencies = [
+      'Normal',
       'Notfall',
-      'Dringend',
-      'Normal'
+      'Dringend'
     ];
 
     return {
