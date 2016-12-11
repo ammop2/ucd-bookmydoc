@@ -82,6 +82,7 @@ angular.module('ctrl.event', [])
 
       var event = {
         title: $scope.title.text,
+        description: $scope.description,
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,

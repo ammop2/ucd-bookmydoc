@@ -8,6 +8,7 @@ angular.module('services.event', [])
   var events = [{
     id: 0,
     title: 'Fieber & Ausschlag',
+    description: "Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
     location: hi1.title,
     doctor: hi1.doctors[0],
     location_img: hi1.img,
@@ -18,9 +19,10 @@ angular.module('services.event', [])
     messages: [
       {
         id: 0,
-        text: " Titel: Fieber & Ausschlag<br>" +
-        "Dringlichkeit: Normal <br> " +
-        "Symptome: Fieber, Ausschlag",
+        text: "<b>Titel:</b> Fieber & Ausschlag<br>" +
+        "<b>Beschreibung:</b> Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit. <br>" +
+        "<b>Dringlichkeit:</b> Normal <br> " +
+        "<b>Symptome:</b> Fieber, Ausschlag",
         sender: "patient"
       },
       {
@@ -38,6 +40,7 @@ angular.module('services.event', [])
     {
       id: 1,
       title: 'Jährliche Untersuchung',
+      description: "Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       location: hi1.title,
       doctor: hi1.doctors[0],
       location_img: hi1.img,
@@ -66,6 +69,7 @@ angular.module('services.event', [])
     {
       id: 2,
       title: 'Operation Kniegelenk',
+      description: "Vestibulum id ligula porta felis euismod semper. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Nullam id dolor id nibh ultricies vehicula ut id elit.",
       doctor: hi1.doctors[0],
       location: hi1.title,
       location_img: hi1.img,

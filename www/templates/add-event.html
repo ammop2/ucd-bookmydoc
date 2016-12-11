@@ -8,6 +8,10 @@
         <span class="input-label">Titel</span>
         <input type="text" ng-model="title.text">
       </label>
+      <label class="item item-input">
+        <span class="input-label">Beschreibung</span>
+        <textarea ng-model="description"></textarea>
+      </label>
       <ion-item class="item" ng-click="selectArzt()"  ng-if="!doctor.name">
         Arzt, Spital
           <span class="item-note">
