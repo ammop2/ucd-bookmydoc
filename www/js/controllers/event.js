@@ -86,7 +86,7 @@ angular.module('ctrl.event', [])
         date: $scope.selectedDateTime,
         location: $scope.healthinstitutes.selected.title,
         location_img: $scope.healthinstitutes.selected.img,
-        doctor: $scope.doctor.title,
+        doctor: $scope.doctor,
         description: $scope.symptoms.toString(),
         newMessages: 0,
         status: 'pending',
