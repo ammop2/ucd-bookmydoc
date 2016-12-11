@@ -452,7 +452,7 @@ window.ionic.version = '1.3.2';
 })(window, document, ionic);
 
 /**
- * ion-events.js
+ * ion-event.js
  *
  * Author: Max Lynch <max@drifty.com>
  *

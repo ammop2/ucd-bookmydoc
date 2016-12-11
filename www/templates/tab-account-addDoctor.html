@@ -24,7 +24,7 @@
               {{healthinstitute.title}}
             </div>
           </div>
-          <div ng-repeat="doctor in healthinstitute.doctors | filterText:selectDoc.searchText | filterType: cSpez.selected" ng-click="addDoctor(healthinstitute.id, doctor.id)">
+          <div ng-repeat="doctor in healthinstitute.doctors | filterText: selectDoc.searchText | filterType: cSpez.selected" ng-click="addDoctor(healthinstitute.id, doctor.id)">
             <div class="item item-avatar">
               <img src={{doctor.img}}>
               <h2>{{doctor.name}} {{doctor.surname}}</h2>

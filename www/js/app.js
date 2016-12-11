@@ -2,14 +2,13 @@ angular.module('starter', [
   'ionic',
   'services.symptom',
   'services.event',
-  'services.doctors',
   'services.doctor',
   'services.recipe',
   'services.healthInstitute',
   'services.patientData',
   'services.healthInsurance',
   'starter.controllers',
-  'ctrl.events',
+  'ctrl.event',
   'ctrl.settings',
   'ctrl.recipes'
 ])

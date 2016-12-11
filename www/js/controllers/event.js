@@ -1,12 +1,10 @@
-angular.module('ctrl.events', [])
+angular.module('ctrl.event', [])
 
-  .controller('EventsCtrl', function ($scope, doctors, HealthInstitute, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
+  .controller('EventsCtrl', function ($scope, HealthInstitute, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
 
     // Definition
     $scope.symptoms = [];
     $scope.title = {};
-    $scope.doctor = {};
-    $scope.doctors = doctors.all();
 
     $scope.patientHealthinstitutes = PatientData.getHealthinstitutes();
     $scope.allHealthinstitutes = HealthInstitute.getDummyData();
@@ -214,11 +212,8 @@ angular.module('ctrl.events', [])
       });
     }
 
-
-    $scope.selectDate = function (event) {
+    $scope.changeDate = function (event){
       var addScope = $scope.$new();
-
-
       addScope.dates = [];
 
       for (var i = 0; i < 90; i++) {
@@ -240,14 +235,37 @@ angular.module('ctrl.events', [])
         });
         cDate.setDate(cDate.getDate() + i);
       }
+      addScope.selected =  addScope.dates[0];
+    }
 
+    $scope.selectDate = function (event) {
+      var addScope = $scope.$new();
+      addScope.dates = [];
 
+      for (var i = 0; i < 90; i++) {
+        var cDate = new Date();
+        addScope.dates.push({
+          times: [
+            '08:00',
+            '09:30',
+            '10:30',
+            '14:30',
+            '17:30',
+          ],
+          date: {
+            value: cDate
+          },
+          selectedTime: {
+            value: {}
+          }
+        });
+        cDate.setDate(cDate.getDate() + i);
+      }
       addScope.selected =  addScope.dates[0];
 
       addScope.slideHasChanged = function (index) {
         addScope.selected =  addScope.dates[index];
       }
-
 
       var confirmPopup = $ionicPopup.confirm({
         title: 'Termin',
