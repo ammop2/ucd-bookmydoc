@@ -35,7 +35,7 @@ angular.module('ctrl.events', [])
 
     // ****** Show Messages Modal ******
 
-    $ionicModal.fromTemplateUrl('templates/show-messages.html', {
+    $ionicModal.fromTemplateUrl('templates/event-messages.html', {
       scope: $scope,
       animation: 'slide-in-right'
     }).then(function (modal) {
