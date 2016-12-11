@@ -1,9 +1,5 @@
 angular.module('ctrl.events', [])
 
-  .controller('AddEventCtrl', function ($scope, $stateParams, Chats) {
-
-  })
-
   .controller('EventsCtrl', function ($scope, doctors, HealthInstitute, $stateParams,$ionicActionSheet, Events, $ionicModal, $ionicPopup, Urgencies, PatientData, Doctors, Symptoms, $location) {
 
     // Definition
