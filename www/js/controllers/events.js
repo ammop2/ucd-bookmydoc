@@ -57,7 +57,7 @@ angular.module('ctrl.events', [])
     };
 
 
-    $ionicModal.fromTemplateUrl('templates/search-arzt.html', {
+    $ionicModal.fromTemplateUrl('templates/tab-event-addDoctor.html', {
       scope: $scope,
       animation: 'slide-in-up'
     }).then(function (modal) {
