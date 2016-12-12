@@ -132,6 +132,7 @@ angular.module('services.event', [])
       for (var i = 0; i < events.length; i++) {
         if (events[i].id === parseInt(id)) {
           events[i].date = newDate;
+          events[i].status = 'pending';
         }
       }
     },

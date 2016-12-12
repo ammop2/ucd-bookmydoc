@@ -53,6 +53,10 @@ ion-header-bar {
   padding-right: 0px;
 }
 
+
+.padding{
+  padding: 20px;
+}
 .no-padding{
   padding: 0px;
 }
