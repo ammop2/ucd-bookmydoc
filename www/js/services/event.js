@@ -16,6 +16,7 @@ angular.module('services.event', [])
     description: 'Nullam id dolor id nibh ultricies vehicula ut id elit.',
     status: 'declined',
     newMessages: 1,
+    media_img: [],
     messages: [
       {
         id: 0,
@@ -32,7 +33,7 @@ angular.module('services.event', [])
       },
       {
         id: 2,
-        text: "Hallo Frau Kunis. Bitte rufen Sie uns an 079 316 33 44",
+        text: "Hallo Frau Kunis. Leider gibt es ein Problem mit Ihrem Termin. Herr Dr. Schweizer muss dringend zu einen Notfall. Bitte rufen Sie uns an 079 316 33 44",
         sender: "doctor"
       }
     ]
@@ -47,6 +48,7 @@ angular.module('services.event', [])
       date: '30.12.2016 - 09:30',
       description: 'Donec ullamcorper nulla non metus auctor fringilla.',
       status: 'accepted',
+      media_img: [],
       newMessages: 0,
       messages: [
         {
@@ -76,6 +78,7 @@ angular.module('services.event', [])
       date: '23.3.2017 - 15:30',
       description: 'Nullam id dolor id nibh ultricies vehicula ut id elit. Aenean eu leo quam. Pellentesque ornare sem lacinia quam venenatis vestibulum.',
       status: 'pending',
+      media_img: [],
       newMessages: 1,
       messages: [
         {

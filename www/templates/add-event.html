@@ -64,6 +64,10 @@
         </button>
       </div>
 
+      <div ng-show="media_img.length > 0" id="media_img" class="item margin-bottom row">
+        <div style="background-image: url('{{img.url}}')" class="media_img col-50" ng-repeat="img in media_img"></div>
+      </div>
+
       <button class="item button button-balanced button-full" ng-click="save()">
         Anfragen
       </button>

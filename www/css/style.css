@@ -121,6 +121,12 @@ ion-header-bar {
   background-size: cover;
 }
 
+.media_img{
+  background-size: cover;
+  height:200px;
+  margin: 20px;
+}
+
 /* Animations */
 
 .slide-in-right {

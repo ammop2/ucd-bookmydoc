@@ -22,6 +22,8 @@ angular.module('ctrl.event', [])
       $scope.searchDocModal.hide();
     }
 
+    $scope.media_img = [];
+
     $scope.urgencies = Urgencies.all();
     $scope.urgencies.selected = 'Normal';
 
@@ -115,6 +117,10 @@ angular.module('ctrl.event', [])
     };
 
     $scope.closeCamera = function () {
+      var img = {
+        url: "/img/camera_thumb.jpg"
+      }
+      $scope.media_img.push(img);
       $scope.modalCamera.hide();
     };
 
